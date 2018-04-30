@@ -1,0 +1,38 @@
+Package: EnrichR
+Type: Package
+Title: Enrichment analysis
+Version: 0.1.8
+Author: Kai Guo
+Maintainer: Kai Guo <guokai8@gmail.com>
+Description: Enrichment analysis for gene sets 
+License: GPL-2
+LazyData: TRUE
+biocViews:
+Imports:
+    Rcpp,
+    GO.db,
+    KEGG.db,
+    ggplot2,
+    dplyr,
+    tidyr,
+    igraph,
+    biomaRt,
+    visNetwork,
+    AnnotationDbi,
+    reshape2,
+    fgsea,
+    GGally,
+    ggrepel,
+    DiagrammeR,
+    sna
+LinkingTo: Rcpp
+Suggests:
+    biomaRt,
+    igraph,
+    ggplot2,
+    visNetwork,
+    knitr,
+    fgsea,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
