@@ -35,7 +35,9 @@ head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 
 ## ----fig.height=6,fig.width=6,fig.align="center",dpi=100-----------------
+###df could also be a vector of the genes you used for enrichment analysis
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T)
-netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01)
+netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
+gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01)
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 
