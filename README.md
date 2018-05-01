@@ -5,8 +5,10 @@ This package supported almost all species pubished by Ensemble and included with
 ## Dependencies  
 R>2.15
 ## Installation
-library(devtools)
+```   
+library(devtools)    
 install_github("guokai8/EnrichR")
+```
 ## Getting started
 ```library(EnrichR) ```  
 More detail please see vignettes
