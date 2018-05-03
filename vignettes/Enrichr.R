@@ -22,7 +22,7 @@ hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
 ## Zea may V2 GO and KEGG annotation data also supported named zm_v2_go and zm_v2_ko
 # we also collect Reactome database for plant, you can just use makePlantROdat function to get RO data.   
 
-## ----fig.height=6,fig.width=6,fig.align="center",dpi=100-----------------
+## ----fig.height=6,fig.width=6,fig.align="center",dpi=500-----------------
 df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(1000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
@@ -34,10 +34,11 @@ resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
 head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 
-## ----fig.height=6,fig.width=6,fig.align="center",dpi=100-----------------
+## ----fig.height=6,fig.width=6,fig.align="center",dpi=500-----------------
 ###df could also be a vector of the genes you used for enrichment analysis
-netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T)
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
+## ----fig.height=6,fig.width=6,fig.align="center",dpi=500-----------------
 gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01)
+## ----fig.height=6,fig.width=6,fig.align="center",dpi=500-----------------
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 
