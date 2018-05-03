@@ -50,14 +50,14 @@ ____
 ### Simple example for enrichment analysis
 
 ```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500}
-df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),1000),padj=abs(rnorm(1000,0,0.01)))
+df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(2000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
 head(res)
 ```       
 
 ```{r,fig.height=6,fig.width=6,fig.align="center"}
-GE.plot(resultFis =res,top=20,pvalue.cutoff = 0.05)
+GE.plot(resultFis =res,top=20)
 resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
 head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
