@@ -29,7 +29,7 @@ res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
 head(res)
 
 ## ----fig.height=6,fig.width=6,fig.align="center"-------------------------
-GE.plot(resultFis =res,top=20,pvalue.cutoff = 0.05)
+GE.plot(resultFis =res,top=20,usePadj=F,pvalue.cutoff=0.05)
 resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
 head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
