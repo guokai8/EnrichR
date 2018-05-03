@@ -1,5 +1,5 @@
 ## ------------------------------------------------------------------------
-set.seed(123)   
+set.seed(1234)   
 library(EnrichR)   
 # To check if your the current species if supported !!!
 showData()   
@@ -23,7 +23,7 @@ hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
 # we also collect Reactome database for plant, you can just use makePlantROdat function to get RO data.   
 
 ## ----fig.height=6,fig.width=6,fig.align="center",dpi=100-----------------
-df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),1000),padj=abs(rnorm(1000,0,0.01)))
+df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(1000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
 head(res)
