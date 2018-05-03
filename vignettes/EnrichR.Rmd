@@ -13,7 +13,7 @@ This document describes how to use the EnrichR package.
 Below is a simple manual for using the package
 
 ## Introduction
-You can do enrichment analysis for different type of annotation data (GO,KEGG,Reactome(may need reactome.db if you work with Human),PFAM and InterPro)             
+You can do enrichment analysis for different type of annotation data (GO,KEGG,Reactome(may need reactome.db if you work with Human,PFAM and InterPro)             
 
 ## Quick tour
 ```{r}
@@ -62,10 +62,10 @@ head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 ```    
 You can also get network graphic for any type of enrichment analysis result and also combine different enrichment result
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=100}
+```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500}   
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T)
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
 gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01)
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
-```    
+```     
 Have funs!
