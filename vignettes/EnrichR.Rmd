@@ -28,6 +28,7 @@ showplant()
 hsa_go<-makeGOdat(species="human",keytype="SYMBOL")
 hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
 # find suitable species name supported by reactome by using showAvailableRO()
+# if you want have RO data just run
 # hsa_ro<-makeROdata(species = "Homo_sapiens") 
 ```         
 ____   
