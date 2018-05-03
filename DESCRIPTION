@@ -24,7 +24,8 @@ Imports:
     GGally,
     ggrepel,
     DiagrammeR,
-    sna
+    sna,
+    webshot
 LinkingTo: Rcpp
 Suggests:
     biomaRt,
