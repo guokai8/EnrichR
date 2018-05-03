@@ -67,4 +67,4 @@ netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T)
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01)
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 ```    
-Congratulations ! You just done all Enrichment analysis 
+Have funs!
