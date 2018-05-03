@@ -18,7 +18,7 @@ More detail please see vignettes
 ```    
 vignette("EnrichR")
 ```   
-## Some useful command
+## Some useful commands
 If you want tranform ID from one type another type("SYMBOL"->"ENSEMBL")
 ``` 
 idconvert(keys=rownames(df)[1:20],species="human",fkeytype= "SYMBOL",tkeytype="ENSEMBL")
