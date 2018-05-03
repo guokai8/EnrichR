@@ -48,7 +48,7 @@ ____
 
 ### Simple example for enrichment analysis
 
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=100}
+```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500}
 df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),1000),padj=abs(rnorm(1000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
