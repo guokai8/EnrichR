@@ -15,6 +15,9 @@ install_github("guokai8/EnrichR",build_vignettes = TRUE)
 library(EnrichR)
 ```  
 More detail please see vignettes
+```    
+vignette("EnrichR")
+```   
 ## Contact information
 I still working on this package and will add more functions here.   
 For any questions please contact guokai8@gmail.com  
