@@ -1,5 +1,5 @@
 ---
-title: "Enrichment analysis for GO and KEGG Pathway"
+title: "Functional Enrichment Analysis and Network Construction"
 author: "Kai Guo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
