@@ -33,7 +33,7 @@ hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
 ```         
 ____   
 
-### You can make annotation data from ensemble   
+### Make annotation from Ensemble   
 * If you work with plant such as rice,you can use ensemble API make annotation data   
 ```{r}
 # rice_go<-makeplantann(species="Oryza sativa Japonica",ann_type = "GO")   #check the species name by using showplant()
@@ -47,8 +47,8 @@ ____
 ```   
 ----
 
-### Simple example for enrichment analysis
-
+### Functional Enrichment Analysis
+#### Gene ontology enrichment analysis
 ```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500,fig.cap="Gene ontology enrichment analysis results"}
 df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(2000,0,0.01)))
 rownames(df)<-df$gene
@@ -58,7 +58,8 @@ head(res)
 GE.plot(resultFis =res,top=20,usePadj=F,pvalue.cutoff=0.05)
 ## You can use default paramters, the command above just to show if you want use pvalue as cut off value.
 ## Rich Factor: The proportion of numbers of DMCs genes in specific GO terms and numbers of all genes in the specific GO terms among the whole genomes. Color scale indicates significance level. 
-```     
+``` 
+#### KEGG pathway enrichment analysis
 ```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500,fig.cap="KEGG pathway enrichment analysis results"}  
 ## KEGG pathway Enrichment analysis results
 resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
