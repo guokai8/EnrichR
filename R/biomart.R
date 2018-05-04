@@ -38,16 +38,16 @@ makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_typ
   dbname=as.character(dbinfo$dbname)
   dataset<-useDataset(dbname,mart=mart)
   if(ann_type=="GO"){
-   res<-getBM(attributes = c("ensembl_gene_id","go_id","name_1006"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+   res<-getBM(attributes = c("ensembl_gene_id","go_id","name_1006"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="KEGG"){
-   res<-getBM(attributes = c("ensembl_gene_id","kegg_enzyme"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+   res<-getBM(attributes = c("ensembl_gene_id","kegg_enzyme"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
    res[,2]<-sub('\\+.*','',res[,2])
   }else if(ann_type=="PFAM"){
-   res<-getBM(attributes = c("ensembl_gene_id","pfam"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+   res<-getBM(attributes = c("ensembl_gene_id","pfam"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="InterPro"){
-    res<-getBM(attributes = c("ensembl_gene_id","interpro"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","interpro"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="InterPro"){
-    res<-getBM(attributes = c("ensembl_gene_id","gramene_plant_reactome"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","gramene_plant_reactome"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else{
     stop("You must specify one type of annotation!\n")
   }
@@ -68,14 +68,14 @@ makeesanno<-function(species="Human",host="uswest.ensembl.org",ann_type="GO"){
   dbname=as.character(dbinfo$dbname)
   dataset<-useDataset(dbname,mart=mart)
   if(ann_type=="GO"){
-    res<-getBM(attributes = c("ensembl_gene_id","go_id","name_1006"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","go_id","name_1006"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="KEGG"){
-    res<-getBM(attributes = c("ensembl_gene_id","kegg_enzyme"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","kegg_enzyme"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
     res[,2]<-sub('\\+.*','',res[,2])
   }else if(ann_type=="PFAM"){
-    res<-getBM(attributes = c("ensembl_gene_id","pfam"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","pfam"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="InterPro"){
-    res<-getBM(attributes = c("ensembl_gene_id","interpro"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info),dataset)
+    res<-getBM(attributes = c("ensembl_gene_id","interpro"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else{
     stop("You must specify one type of annotation!\n")
   }
