@@ -73,8 +73,7 @@ KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 ```         
 You can also get network graphic for any type of enrichment analysis result and also combine different enrichment result           
 
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}  
-
+```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300}     
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
 ```    
 ```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}
