@@ -51,7 +51,7 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
 #' @param  padj.cutoff: the padj cut-off value for selecting Term
 #' @export
 #' @author Kai Guo
-GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL){
+GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL){
     require(ggplot2)
     if(!is.null(padj.cutoff)){
       resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -73,13 +73,13 @@ GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,fontsize.x=10,
     if(usePadj==FALSE){
       p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Pvalue))))
       p<-p+scale_fill_gradient(low="lightpink",high="red")+theme_light()+
-        theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
+        theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
       p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
       print(p)
     }else{
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Padj))))
     p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()+
-      theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Padj)")
+      theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Padj)")
     p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     print(p)
     }
