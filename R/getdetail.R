@@ -1,10 +1,10 @@
 #' Get detail information from enrichment results
-#' @importFrom tidyverse left_join
 #' @param rese Functional enrichment results
 #' @param resd DEG result or vector of input genes
 #' @export
 #' @author Kai Guo
 getdetail<-function(rese,resd){
+  require(tidyverse)
   if(!is.data.frame(resd)){
     resd=data.frame(gene=resd)
     }
