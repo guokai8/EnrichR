@@ -49,7 +49,7 @@ ____
 
 ### Functional Enrichment Analysis
 #### Gene ontology enrichment analysis
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500,fig.cap="Gene ontology enrichment analysis results"}
+```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Gene ontology enrichment analysis results"}
 df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(2000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
@@ -60,7 +60,7 @@ GE.plot(resultFis =res,top=20,usePadj=F,pvalue.cutoff=0.05)
 ## Rich Factor: The proportion of numbers of genes in specific GO terms and numbers of all genes in the specific GO terms among the whole genomes. Color scale indicates significance level. 
 ``` 
 #### KEGG pathway enrichment analysis
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=500,fig.cap="KEGG pathway enrichment analysis results"}  
+```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="KEGG pathway enrichment analysis results"}  
 ## KEGG pathway Enrichment analysis results
 resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
 head(resk)
