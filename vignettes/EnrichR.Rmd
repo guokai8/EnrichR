@@ -80,5 +80,12 @@ gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,vertex.label.cex
 ```    
 ```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
-```       
+```    
+#### Get details include the input information   
+```{r}
+resgo<-getdetail(res,df)
+head(resgo,6)
+resko<-getdetail(resk,df)
+head(resko,6)
+```    
 ## Have funs!
