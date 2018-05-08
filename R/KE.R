@@ -69,15 +69,15 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,fontsize.x=10,
     dd$Term<-factor(dd$Term,levels=dd$Term[order(dd$rich)])
   }
   if(usePadj==FALSE){
-    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))+
+    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))++theme_minimal()+
       theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
-    scale_colour_gradient(low="lightpink",high="red")+theme_minimal()+ylab("Pathway name")+
+    scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
     xlab("Rich factor")+labs(size="Gene number")
     print(p)
   }else{
-    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)))+
+    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)))+theme_minimal()+
       theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
-      scale_colour_gradient(low="lightpink",high="red")+theme_minimal()+ylab("Pathway name")+
+      scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
       xlab("Rich factor")+labs(size="Gene number")
     print(p)
   }}else{
