@@ -50,7 +50,7 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 #' @param  padj.cutoff: the padj cut-off value for selecting Term
 #' @export
 #' @author Kai Guo
-KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,fontsize.x=10,fontsize.y=10,padj.cutoff=NULL,usePadj=TRUE,filename=NULL){
+KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,padj.cutoff=NULL,usePadj=TRUE,filename=NULL){
   library(ggplot2)
   if(!is.null(padj.cutoff)){
     resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -70,7 +70,7 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,fontsize.x=10,
   }
   if(usePadj==FALSE){
     p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))++theme_minimal()+
-      theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
+      theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
     scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
     xlab("Rich factor")+labs(size="Gene number")
     print(p)
