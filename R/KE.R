@@ -69,7 +69,7 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,font.x="bold",
     dd$Term<-factor(dd$Term,levels=dd$Term[order(dd$rich)])
   }
   if(usePadj==FALSE){
-    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))++theme_minimal()+
+    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
     scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
     xlab("Rich factor")+labs(size="Gene number")
