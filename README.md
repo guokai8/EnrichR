@@ -21,7 +21,11 @@ vignette("EnrichR")
 ## Some useful commands
 If you want tranform ID from one type another type("SYMBOL"->"ENSEMBL")
 ``` 
-idconvert(keys=rownames(df)[1:20],species="human",fkeytype= "SYMBOL",tkeytype="ENSEMBL")
+idconvert(keys=vector_of_symbols,species="human",fkeytype= "SYMBOL",tkeytype="ENSEMBL")
+```  
+If you want have more details include input data and enrichment results
+```  
+getdetail(enrichres,input_data)
 ```  
 ## Contact information
 I still working on this package and will add more functions here.   
