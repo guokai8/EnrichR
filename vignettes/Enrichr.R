@@ -41,4 +41,9 @@ netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nod
 gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,vertex.label.cex=4)
 ## ----fig.height=6,fig.width=6,fig.align="center",dpi=300-----------------
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
-
+##
+resgo<-getdetail(res,df)
+head(resgo,6)
+resko<-getdetail(resk,df)
+head(resko,6)
+##
