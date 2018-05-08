@@ -1,6 +1,6 @@
 #' Get detail information from enrichment results
 #' @param rese Functional enrichment results
-#' @param resd DEG result or vector of input genes
+#' @param resd DEG result with one gene name column or vector of input genes 
 #' @export
 #' @author Kai Guo
 getdetail<-function(rese,resd){
