@@ -83,9 +83,9 @@ mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 ```       
 #### Get details include the input information   
 ```{r}   
-resgo<-getdetail(res,df)
-head(resgo,6)
-resko<-getdetail(resk,df)
-head(resko,6)
+resgo<-getdetail(res,df);
+head(resgo,6);
+resko<-getdetail(resk,df);
+head(resko,6);
 ```        
 ## Have funs!
