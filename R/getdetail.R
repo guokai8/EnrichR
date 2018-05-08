@@ -8,7 +8,7 @@ getdetail<-function(rese,resd){
   if(!is.data.frame(resd)){
     resd=data.frame(gene=resd)
     }
-  gene<-strsplit(rese$GeneID,split=",")
+  gene<-strsplit(rese$GeneID,split="\\,")
   names(gene)<-rese$Annot
   gened<-data.frame("TERM"=rep(names(gene),times=unlist(lapply(gene,length))),"Annot"=rep(rese$Term,times=unlist(lapply(gene,length))),"GeneID"=unlist(gene),row.names=NULL)
   gened$GeneID<-as.character(gened$GeneID)
