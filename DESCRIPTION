@@ -7,7 +7,6 @@ Maintainer: Kai Guo <guokai8@gmail.com>
 Description: Functional Enrichment Analysis and Network Construction 
 License: GPL-2
 LazyData: TRUE
-biocViews:
 Imports:
     Rcpp,
     GO.db,
@@ -36,3 +35,4 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
+biocViews:GO.db,fgsea,biomaRt,AnnotationDbi
