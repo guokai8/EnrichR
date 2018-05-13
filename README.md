@@ -14,7 +14,7 @@ install_github("guokai8/EnrichR",build_vignettes = TRUE)
 ```
 library(EnrichR)
 ```  
-More detail please see vignette
+More detail please see [vignette](https://github.com/guokai8/EnrichR/wiki)
 ```    
 vignette("EnrichR")
 ```   
