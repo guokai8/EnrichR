@@ -23,6 +23,7 @@ Imports:
     ggrepel,
     DiagrammeR,
     sna,
+    intergraph,
     webshot
 LinkingTo: Rcpp
 Suggests:
