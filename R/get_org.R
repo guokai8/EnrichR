@@ -22,8 +22,9 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
 #' @param keytype: the gene type
 #' @export
 #' @author Kai Guo
-makeKOdat<-function(species="human",keytype="ENTREZID"){
+makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
   dbname<-.getdbname(species=species);
+  if(builtin==TRUE){
   suppressMessages(require(AnnotationDbi))
   sel<-AnnotationDbi::select
   if (!require(dbname,character.only=TRUE)){
@@ -35,6 +36,19 @@ makeKOdat<-function(species="human",keytype="ENTREZID"){
   dbname<-eval(parse(text=dbname))
   KO_FILE=sel(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns="PATH")
   KO_FILE<-na.omit(KO_FILE)
+  }else{
+    suppressMessages(require(KEGGREST))
+    spe=.getspeices(species)
+    tmp<-keggLink("pathway",spe)
+    tmp<-substr(tmp,9,13)
+    names(tmp)<-sub('.*:','',names(tmp))
+    tmp<-vec_to_df(tmp,name=c(keytype,"PATH"))
+    if(keytype!="ENTREZID"){
+      tmp[,1]<-idconvert(species,keys=tmp[,1],fkeytype = "ENTREZID",tkeytype = keytype)
+      tmp<-na.omit(tmp)
+    }
+    KO_FILE=tmp
+  }
   return(KO_FILE)
 }
 #' Convert ID between ENTREZID to SYMBOL or other type ID based on bioconductor annotation package
