@@ -1,7 +1,7 @@
 Package: EnrichR
 Type: Package
 Title: Enrichment analysis
-Version: 0.1.8
+Version: 0.1.9
 Author: Kai Guo
 Maintainer: Kai Guo <guokai8@gmail.com>
 Description: Functional Enrichment Analysis and Network Construction 
@@ -24,7 +24,8 @@ Imports:
     DiagrammeR,
     sna,
     intergraph,
-    webshot
+    webshot,
+    KEGGREST
 LinkingTo: Rcpp
 Suggests:
     biomaRt,
