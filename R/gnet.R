@@ -1,5 +1,5 @@
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-                weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE, vertex.label.font = 2,
+                weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
                 vertex.label.color = "black", vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
                 width=7,height=7,...)
 {
@@ -68,6 +68,10 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   wn <- wn[wn[, 1] != wn[, 2], ]
   wn <- wn[!is.na(wn[, 3]), ]
   wn <- wn[wn[, 3] > 0, ]
+  if (writeCyt == TRUE) {
+    write.table(wn, file = cytoscapeFile, sep = "\t",
+                row.names = F, quote = F)
+  }
   g <- igraph::graph.data.frame(wn[, -3], directed = F)
   E(g)$width = sqrt(wn[, 3] * 5)
   pvalue = pvalue[V(g)$name]
