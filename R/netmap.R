@@ -20,7 +20,7 @@
 #' @export
 #' @author Kai Guo
 netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-                  weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE, vertex.label.font = 2,
+                  weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
                   vertex.label.color = "black", vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,
                   visNet = FALSE,smooth=TRUE,nodeselect=FALSE,editvis=FALSE,savevis=FALSE,savefig=FALSE,filename="network",...)
 {
@@ -87,7 +87,7 @@ netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   wn <- wn[!is.na(wn[, 3]), ]
   wn <- wn[wn[, 3] > 0, ]
   if (writeCyt == TRUE) {
-    write.table(wn, file = "network_for_Cyt.txt", sep = "\t",
+    write.table(wn, file = cytoscapeFile, sep = "\t",
                 row.names = F, quote = F)
   }
   g <- igraph::graph.data.frame(wn[, -3], directed = F)
