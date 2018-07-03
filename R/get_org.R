@@ -192,3 +192,9 @@ showData<-function(){
   dbdata<-data.frame(dbname=dbname,species=species)
   dbdata
 }
+
+vec_to_df<-function(x,name){
+  dd<-data.frame(names(x),x)
+  colnames(dd)<-name
+  return(dd)
+}
