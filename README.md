@@ -1,6 +1,6 @@
 # EnrichR
 Functional Enrichment Analysis and Network Construction 
-#### PS: EnrichR will be changed as RichR shortly
+#### PS: EnrichR will be changed to RichR shortly
 ## Description  
 __EnrichR__ is a package can be used for functional enrichment analysis and network construction based on enrichment analysis results. It supported almost all species pubished by ENSEMBL and included with Bioconductor   
 ## Dependencies  
