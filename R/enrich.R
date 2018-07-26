@@ -8,6 +8,7 @@
 #' @export
 #' @author Kai Guo
 enrich<-function(df,annot,annot.info=NULL,minSize=1,maxSize=500,keepRich=TRUE,filename=NULL,gene.cutoff=0.01,padj.method="BH"){
+  suppressMessages(require(tidyr))
   ao2gene<-sf(annot)
   ao2gene_num<-name_table(ao2gene)
   gene2ao<-sf(annot[,c(2,1)])
