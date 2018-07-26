@@ -6,6 +6,7 @@
 #' @export
 #' @author Kai Guo
 GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,padj.method="BH"){
+  suppressMessages(require(tidyr))
   go2gene<-sf(GO_FILE)
   all_go<-.get_go_dat(ont=OP)
   go2gene<-go2gene[names(go2gene)%in%all_go$GOID];
