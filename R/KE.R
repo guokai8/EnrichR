@@ -5,6 +5,7 @@
 #' @param cutoff: DGE singificant cutoff value
 #' @export
 KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH"){
+  suppressMessages(require(tidyr))
   ko2gene<-sf(KO_FILE)
   ko2gene_num<-name_table(ko2gene)
   gene2ko<-sf(KO_FILE[,c(2,1)])
