@@ -5,10 +5,11 @@
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-IE.ensemble<-function(df,IO_FILE,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",filename=NULL){
+IE.ensemble<-function(df,IO_FILE,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",filename=NULL,cutoff=0.05){
   data(interproanno)
   rownames(interano)<-interano[,1]
   res=enrich(df,annot=IO_FILE,annot.info = interano,filename=filename,gene.cutoff = gene.cutoff,padj.method = padj.method,minSize=minSize,maxSize=maxSize,keepRich=keepRich)
+  res<-res[res$Pvalue<cutoff,]
   return(res)
 }
 #' InterPro Enrichment analysis function for plant
@@ -18,9 +19,10 @@ IE.ensemble<-function(df,IO_FILE,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-IE.plant<-function(df,IO_FILE,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",filename=NULL){
+IE.plant<-function(df,IO_FILE,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",filename=NULL,cutoff=0.05){
   data(interproanno)
   rownames(interano)<-interano[,1]
   res=enrich(df,annot=IO_FILE,annot.info = interano,filename=filename,gene.cutoff = gene.cutoff,padj.method = padj.method,minSize=minSize,maxSize=maxSize,keepRich=keepRich)
+  res<-res[res$Pvalue<cutoff,]
   return(res)
 }
