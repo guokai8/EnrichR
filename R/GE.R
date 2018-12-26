@@ -5,7 +5,7 @@
 #' @param  gene.cutoff: the cut-off value for select DGE
 #' @export
 #' @author Kai Guo
-GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,padj.method="BH"){
+GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,padj.method="BH",cutoff=0.05){
   suppressMessages(require(tidyr))
   go2gene<-sf(GO_FILE)
   all_go<-.get_go_dat(ont=OP)
@@ -32,7 +32,7 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
                         "Significant"=k[rhs_an$GOID],"Pvalue"=as.vector(rhs),"Padj"=lhs,
                         "GeneID"=rhs_gene[as.vector(rhs_an$GOID)])
   resultFis<-resultFis[order(resultFis$Pvalue),]
-  resultFis<-resultFis[resultFis$Pvalue<0.05,]
+  resultFis<-resultFis[resultFis$Pvalue<cutoff,]
   resultFis<-resultFis%>%dplyr::filter(Significant<=maxSize)
   if(keepRich==FALSE){
     resultFis<-resultFis%>%dplyr::filter(Significant>=minSize)
