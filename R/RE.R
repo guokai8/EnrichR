@@ -5,7 +5,7 @@
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-RE<-function(df, RO_FILE, keytype = "SYMBOL", species = "human",padj.method = "BH", minSize=2,maxSize=500,keepRich=TRUE,filename = NULL) {
+RE<-function(df, RO_FILE, keytype = "SYMBOL", species = "human",padj.method = "BH", minSize=2,maxSize=500,keepRich=TRUE,filename = NULL,cutoff=0.05) {
   annot.info = RO_FILE$roan
   rownames(annot.info) <- annot.info$RO
   RO_FILE = RO_FILE$ro
@@ -18,7 +18,7 @@ RE<-function(df, RO_FILE, keytype = "SYMBOL", species = "human",padj.method = "B
   }
   res = enrich(df, annot = RO_FILE, annot.info = annot.info,
                filename = filename, padj.method = padj.method,minSize=minSize,maxSize=maxSize,keepRich=keepRich)
-  res<-res[res$Pvalue<0.05,]
+  res<-res[res$Pvalue<cutoff,]
   return(res)
 }
 #' Reactome Pathway Enrichment analysis function for plant
@@ -28,7 +28,7 @@ RE<-function(df, RO_FILE, keytype = "SYMBOL", species = "human",padj.method = "B
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-RE.plant<-function(df,RO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL){
+RE.plant<-function(df,RO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,cutoff=0.05){
     annot.info=RO_FILE[,2:3]
     RO_FILE=RO_FILE[,1:2]
     rr<-strsplit(unique(apply(annot.info,1,function(x)paste(x,collapse="@",sep=""))),split = "@")
@@ -36,5 +36,6 @@ RE.plant<-function(df,RO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSiz
     rownames(annot.info)=annot.info[,1]
     colnames(annot.info)=c("RO","Description")
     res=enrich(df,annot=RO_FILE,annot.info = annot.info,filename=filename,gene.cutoff = gene.cutoff,padj.method = padj.method, minSize=minSize,maxSize=maxSize,keepRich=keepRich)
+    res<-res[res$Pvalue<cutoff,]
     return(res)
 }
