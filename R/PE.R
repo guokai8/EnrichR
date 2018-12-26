@@ -5,10 +5,11 @@
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-PE.ensemble<-function(df,PO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL){
+PE.ensemble<-function(df,PO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,cutoff=0.05){
   data(pfanno)
   annot.info=pfanno
   res=enrich(df,annot=PO_FILE,annot.info =pfanno,filename=filename,gene.cutoff = gene.cutoff,padj.method = padj.method)
+  res<-res[res$Pvalue<cutoff,]
   return(res)
 }
 #' PFAM Enrichment analysis function based on ensemble plant annotation data
@@ -18,8 +19,9 @@ PE.ensemble<-function(df,PO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,max
 #' @param gene.cutoff: DGE singificant cutoff value
 #' @export
 #' @author Kai Guo
-PE.plant<-function(df,PO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL){
+PE.plant<-function(df,PO_FILE,gene.cutoff=0.01,padj.method="BH",minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,cutoff=0.05){
   data(pfanno)
   res=enrich(df,annot=PO_FILE,annot.info = pfanno,filename=filename,gene.cutoff = gene.cutoff,padj.method = padj.method,minSize=minSize,maxSize=maxSize,keepRich=keepRich)
+  res<-res[res$Pvalue<cutoff,]
   return(res)
 }
