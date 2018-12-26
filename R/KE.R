@@ -4,7 +4,7 @@
 #' @param filenam: output filename
 #' @param cutoff: DGE singificant cutoff value
 #' @export
-KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH"){
+KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",cutoff=0.05){
   suppressMessages(require(tidyr))
   ko2gene<-sf(KO_FILE)
   ko2gene_num<-name_table(ko2gene)
@@ -31,7 +31,7 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
                         "GeneID"=rhs_gene[names(rhs)])
 
   resultFis<-resultFis[order(resultFis$Pvalue),]
-  resultFis<-resultFis[resultFis$Pvalue<0.05,]
+  resultFis<-resultFis[resultFis$Pvalue<cutoff,]
   resultFis<-resultFis%>%dplyr::filter(Significant<=maxSize)
   if(keepRich==FALSE){
     resultFis<-resultFis%>%dplyr::filter(Significant>=minSize)
