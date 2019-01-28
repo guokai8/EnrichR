@@ -1,6 +1,6 @@
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
-                vertex.label.color = "black", vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
+                vertex.label.color = "black", vertex.label.cex = 0.5,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
                 width=7,height=7,...)
 {
   options(stringsAsFactors = F)
