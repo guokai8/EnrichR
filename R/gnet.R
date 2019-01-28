@@ -1,3 +1,31 @@
+##' @name gnet
+##' @title Draw network with ggplot2 style
+##' @description gnet provides method to draw the enrichment results with a ggplot2 style network
+##' @rdname gnet
+##' @importFrom GGally ggnet2
+##' @import ggrepel geom_text_repel
+##' @import reshape2 melt
+##' @param df Differential expression result or vector of genes
+##' @param rhs Enrichment results 
+##' @param top number of terms to show (default: 50)
+##' @param pvalue.cutoff cutoff p value for enrichment result
+##' @param padj.cutoff cutoff p adjust value for enrichment result
+##' @param weightcut cutoff value for the edges
+##' @param useTerm use terms for nodes (default: TRUE)
+##' @param writeCyt write out the cytoscape file
+##' @param cytoscapeFile output cytoscape File
+##' @param vertex.label.font label size
+##' @param vertex.label.color label color
+##' @param vertex.label.cex label size
+##' @param vertex.node.shape node shape
+##' @param layout layout method
+##' @param savefig save figures or not
+##' @param filename output figure name
+##' @param width width for output figure
+##' @param height height for output figure
+##' @export
+##' @author Kai Guo
+
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
                 vertex.label.color = "black", vertex.label.cex = 0.5,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
