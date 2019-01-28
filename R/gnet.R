@@ -14,7 +14,7 @@
 ##' @param useTerm use terms for nodes (default: TRUE)
 ##' @param writeCyt write out the cytoscape file
 ##' @param cytoscapeFile output cytoscape File
-##' @param vertex.label.font label size
+##' @param segment.size size for label segment
 ##' @param vertex.label.color label color
 ##' @param vertex.label.cex label size
 ##' @param vertex.node.shape node shape
@@ -27,9 +27,9 @@
 ##' @author Kai Guo
 
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-                weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
+                weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt",
                 vertex.label.color = "black", vertex.label.cex = 0.5,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
-                width=7,height=7,...)
+                width=7,height=7,segment.size=0.2,...)
 {
   options(stringsAsFactors = F)
   suppressMessages(library(reshape2))
@@ -123,7 +123,7 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   }
   V(g)$size <- log(gs[V(g)$name], base = 10) * 10
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
-         edge.size = E(g)$width/10) + geom_text_repel(label = V(g)$name,size=vertex.label.cex,segment.size=0.2)+theme(legend.position = "none")
+         edge.size = E(g)$width/10) + geom_text_repel(label = V(g)$name,size=vertex.label.cex,segment.size=segment.size)+theme(legend.position = "none")
   print(p)
     if(savefig==TRUE){
     ggsave(p,file=paste(filename,"pdf",sep="."),width=width,height = height)
