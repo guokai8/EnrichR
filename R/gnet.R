@@ -17,7 +17,7 @@
 ##' @param segment.size size for label segment
 ##' @param vertex.label.color label color
 ##' @param vertex.label.cex label size
-##' @param vertex.node.shape node shape
+##' @param vertex.node.shape vector of shape(1..24) and names of the vector should be the terms
 ##' @param layout layout method
 ##' @param savefig save figures or not
 ##' @param filename output figure name
