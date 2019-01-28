@@ -122,8 +122,17 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
     names(gs) <- rownames(rhs)
   }
   V(g)$size <- log(gs[V(g)$name], base = 10) * 10
+  if(!is.null(vertex.node.shape)){
+    node.shape=rep(20,length(V(g)$name))  
+    names(node.shape)<-V(g)$name
+    node.shape[names(vertex.node.shape)]<-vertex.node.shape
+   }else{
+    node.shape=rep(20,length(V(g)$name))  
+    names(node.shape)<-V(g)$name
+  }
+     
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
-         edge.size = E(g)$width/10) + geom_text_repel(label = V(g)$name,size=vertex.label.cex,segment.size=segment.size)+theme(legend.position = "none")
+         edge.size = E(g)$width/10,node.shape=node.shape) + geom_text_repel(label = V(g)$name,size=vertex.label.cex,segment.size=segment.size)+theme(legend.position = "none")
   print(p)
     if(savefig==TRUE){
     ggsave(p,file=paste(filename,"pdf",sep="."),width=width,height = height)
