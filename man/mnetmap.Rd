@@ -8,9 +8,12 @@ mnetmap(df, gores = NULL, kores = NULL, rores = NULL, pfres = NULL,
   itres = NULL, top = NULL, top.display = NULL,
   pvalue.cutoff = 0.05, padj.cutoff = NULL, visNet = F,
   weightcut = 0.2, useTerm = TRUE, layout = NULL,
-  vertex.label.cex = 0.5, gnet = FALSE, ...)
+  vertex.label.cex = 0.5, gnet = FALSE, vertex.node.shape = NULL,
+  ...)
 }
 \arguments{
+\item{vertex.node.shape}{vector of shape and names of the vector should be the terms (default: 20)}
+
 \item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
 
 \item{gores:}{GO Enrichment analsyis result}

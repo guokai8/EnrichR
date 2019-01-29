@@ -35,7 +35,7 @@ gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
 
 \item{vertex.label.cex}{label size}
 
-\item{vertex.node.shape}{vector of shape(1..24) and names of the vector should be the terms}
+\item{vertex.node.shape}{vector of shape and names of the vector should be the terms (default: 20)}
 
 \item{layout}{layout method}
 
