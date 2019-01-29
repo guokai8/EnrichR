@@ -29,6 +29,7 @@ Imports:
 LinkingTo: Rcpp
 Suggests:
     biomaRt,
+    GO.db,
     igraph,
     ggplot2,
     visNetwork,
@@ -37,4 +38,5 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-biocViews:GO.db,fgsea,biomaRt,AnnotationDbi,KEGGREST
+biocViews:Annotation, Clustering, GeneSetEnrichment, GO, KEGG,
+    MultipleComparison, Pathways, Reactome, Visualization
