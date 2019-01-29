@@ -17,6 +17,8 @@ enrich_fgsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000
   res<-fgsea(pathways=annod,stats=x,minSize=minSize,maxSize=maxSize,nperm=nperm)
   return(res)
 }
+#' @name plot_gsea
+#' @title plot the gsea result
 #' @param x: a vector include all log2FC with gene name
 #' @param annot: annotation file for all genes
 #' @param term: the significant term

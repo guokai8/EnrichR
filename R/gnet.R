@@ -3,10 +3,10 @@
 ##' @description gnet provides method to draw the enrichment results with a ggplot2 style network
 ##' @rdname gnet
 ##' @importFrom GGally ggnet2
-##' @import ggrepel geom_text_repel
-##' @import reshape2 melt
+##' @importFrom ggrepel geom_text_repel
+##' @importFrom reshape2 melt
 ##' @param df Differential expression result or vector of genes
-##' @param rhs Enrichment results 
+##' @param rhs Enrichment results
 ##' @param top number of terms to show (default: 50)
 ##' @param pvalue.cutoff cutoff p value for enrichment result
 ##' @param padj.cutoff cutoff p adjust value for enrichment result
@@ -17,7 +17,7 @@
 ##' @param segment.size size for label segment
 ##' @param vertex.label.color label color
 ##' @param vertex.label.cex label size
-##' @param vertex.node.shape vector of shape(1..24) and names of the vector should be the terms
+##' @param vertex.node.shape vector of shape and names of the vector should be the terms (default: 20)
 ##' @param layout layout method
 ##' @param savefig save figures or not
 ##' @param filename output figure name
@@ -123,14 +123,14 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   }
   V(g)$size <- log(gs[V(g)$name], base = 10) * 10
   if(!is.null(vertex.node.shape)){
-    node.shape=rep(20,length(V(g)$name))  
+    node.shape=rep(20,length(V(g)$name))
     names(node.shape)<-V(g)$name
     node.shape[names(vertex.node.shape)]<-vertex.node.shape
    }else{
-    node.shape=rep(20,length(V(g)$name))  
+    node.shape=rep(20,length(V(g)$name))
     names(node.shape)<-V(g)$name
   }
-     
+
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
          edge.size = E(g)$width/10,node.shape=node.shape) + geom_text_repel(label = V(g)$name,size=vertex.label.cex,segment.size=segment.size)+theme(legend.position = "none")
   print(p)
