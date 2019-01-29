@@ -5,8 +5,8 @@
 \title{Display enrichment result By using dotchart}
 \usage{
 enrichdot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  padj.cutoff = NULL, fontsize.x = 10, fontsize.y = 10, usePadj = TRUE,
-  filename = NULL)
+  padj.cutoff = NULL, fontsize.x = 10, fontsize.y = 10,
+  usePadj = TRUE, filename = NULL)
 }
 \arguments{
 \item{resultFis:}{Ennrichment analysis result data.frame}

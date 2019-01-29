@@ -6,10 +6,12 @@
 \usage{
 netmap(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,
+  cytoscapeFile = "network-file-for-cytoscape.txt",
   vertex.label.font = 2, vertex.label.color = "black",
   vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,
-  visNet = FALSE, smooth = TRUE, nodeselect = FALSE, editvis = FALSE,
-  savevis = FALSE, savefig = FALSE, filename = "network", ...)
+  visNet = FALSE, smooth = TRUE, nodeselect = FALSE,
+  editvis = FALSE, savevis = FALSE, savefig = FALSE,
+  filename = "network", ...)
 }
 \arguments{
 \item{smooth}{use smooth edge for visNetwork}

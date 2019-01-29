@@ -4,8 +4,9 @@
 \alias{IE.ensemble}
 \title{InterPro Enrichment analysis function}
 \usage{
-IE.ensemble(df, IO_FILE, gene.cutoff = 0.01, minSize = 2, maxSize = 500,
-  keepRich = TRUE, padj.method = "BH", filename = NULL)
+IE.ensemble(df, IO_FILE, gene.cutoff = 0.01, minSize = 2,
+  maxSize = 500, keepRich = TRUE, padj.method = "BH",
+  filename = NULL, cutoff = 0.05)
 }
 \arguments{
 \item{df:}{DGE files (DESeq2 result files) or vector contains gene names}

@@ -5,7 +5,8 @@
 \title{GO Enrichment analysis function}
 \usage{
 GE(df, GO_FILE, OP = "BP", gene.cutoff = 0.01, minSize = 2,
-  maxSize = 500, keepRich = TRUE, filename = NULL, padj.method = "BH")
+  maxSize = 500, keepRich = TRUE, filename = NULL,
+  padj.method = "BH", cutoff = 0.05)
 }
 \arguments{
 \item{df:}{DGE files (DESeq2 result files) or vector contains gene names}

@@ -5,7 +5,8 @@
 \title{KEGG Pathway Enrichment analysis function}
 \usage{
 KE(df, KO_FILE, filename = NULL, gene.cutoff = 0.01, minSize = 2,
-  maxSize = 500, keepRich = TRUE, padj.method = "BH")
+  maxSize = 500, keepRich = TRUE, padj.method = "BH",
+  cutoff = 0.05)
 }
 \arguments{
 \item{df:}{DGE files (DESeq2 result files) or vector contains gene names}

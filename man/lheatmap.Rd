@@ -5,7 +5,8 @@
 \title{Plot compare heatmap of Enrichment result among DEG groups}
 \usage{
 lheatmap(rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,
-  padj = NULL, horizontal = FALSE, pval = 0.05, returnData = FALSE, ...)
+  padj = NULL, horizontal = FALSE, pval = 0.05, returnData = FALSE,
+  ...)
 }
 \arguments{
 \item{rhs:list}{of enrchment analysis result among DEG groups}

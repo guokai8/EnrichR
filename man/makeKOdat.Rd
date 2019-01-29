@@ -4,7 +4,7 @@
 \alias{makeKOdat}
 \title{make KEGG annotation data function}
 \usage{
-makeKOdat(species = "human", keytype = "ENTREZID")
+makeKOdat(species = "human", keytype = "ENTREZID", builtin = TRUE)
 }
 \arguments{
 \item{species:}{you can check the support species by using showData()}

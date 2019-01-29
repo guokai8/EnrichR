@@ -4,8 +4,9 @@
 \alias{RE.plant}
 \title{Reactome Pathway Enrichment analysis function for plant}
 \usage{
-RE.plant(df, RO_FILE, gene.cutoff = 0.01, padj.method = "BH", minSize = 2,
-  maxSize = 500, keepRich = TRUE, filename = NULL)
+RE.plant(df, RO_FILE, gene.cutoff = 0.01, padj.method = "BH",
+  minSize = 2, maxSize = 500, keepRich = TRUE, filename = NULL,
+  cutoff = 0.05)
 }
 \arguments{
 \item{df:}{DGE files (DESeq2 result files) or vector contains gene names}

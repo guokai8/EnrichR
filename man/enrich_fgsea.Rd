@@ -4,8 +4,8 @@
 \alias{enrich_fgsea}
 \title{Enrichment analysis for any type of annotation data}
 \usage{
-enrich_fgsea(x, annot, annot.info = NULL, minSize = 15, maxSize = 500,
-  nperm = 5000, filename = NULL, padj.method = "BH")
+enrich_fgsea(x, annot, annot.info = NULL, minSize = 15,
+  maxSize = 500, nperm = 5000, filename = NULL, padj.method = "BH")
 }
 \arguments{
 \item{x:}{a vector include all log2FC with gene name}

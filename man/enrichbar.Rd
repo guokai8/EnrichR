@@ -4,9 +4,10 @@
 \alias{enrichbar}
 \title{Display enrichment result By using barchart}
 \usage{
-enrichbar(resultFis, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-  order = FALSE, fontsize.x = 10, fontsize.y = 10, fontsize.text = 3,
-  angle = 75, usePadj = TRUE, filename = NULL)
+enrichbar(resultFis, top = 50, pvalue.cutoff = 0.05,
+  padj.cutoff = NULL, order = FALSE, fontsize.x = 10,
+  fontsize.y = 10, fontsize.text = 3, angle = 75, usePadj = TRUE,
+  filename = NULL)
 }
 \arguments{
 \item{resultFis:}{Ennrichment analysis result data.frame}

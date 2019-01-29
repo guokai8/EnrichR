@@ -5,7 +5,8 @@
 \title{Display GO enrichment result}
 \usage{
 GE.plot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  fontsize.x = 10, fontsize.y = 10, fontsize.text = 3, angle = 75,
+  font.x = "bold", font.y = "bold", fontsize.x = 10,
+  fontsize.y = 10, fontsize.text = 3, angle = 75,
   padj.cutoff = NULL, usePadj = TRUE, filename = NULL)
 }
 \arguments{
