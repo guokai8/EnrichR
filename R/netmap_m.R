@@ -12,6 +12,7 @@
 #' @param writeCyt: export file for Cyt software
 #' @param vertex.label.color: color of label(default:black)
 #' @param vertex.label.cex: size of label(default:0.5)
+#' @param vertex.node.shape vector of shape and names of the vector should be the terms (default: 20)
 #' @param layout: layout format (defult:layout.fruchterman.reingold)
 #' @param visNet: use VisNetwork method to display network(default:FALSE)
 #' @param top: number of Terms you want to display(default:the total number of all Significant number)
@@ -19,7 +20,7 @@
 #' @author Kai Guo
 mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
                    itres=NULL,top=NULL,top.display=NULL,pvalue.cutoff=0.05,padj.cutoff=NULL,
-                   visNet=F,weightcut=0.2,useTerm=TRUE,layout=NULL,vertex.label.cex=0.5,gnet=FALSE,...){
+                   visNet=F,weightcut=0.2,useTerm=TRUE,layout=NULL,vertex.label.cex=0.5,gnet=FALSE,vertex.node.shape=NULL,...){
    if(!is.null(top)){
      rhs<-Reduce(function(x, y) rbind(x, y), list(gores[1:top,], kores[1:top,], rores[1:top,],pfres[1:top,],itres[1:top,]))
    }
@@ -30,7 +31,7 @@ mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
      top.display=nrow(rhs)
    }
    if(gnet==TRUE){
-     gnet(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,...)
+     gnet(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,vertex.node.shape=vertex.node.shape,...)
 
    }else{
      netmap(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,...)
