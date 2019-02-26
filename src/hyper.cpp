@@ -15,7 +15,7 @@ NumericVector hyper_bench_vector(NumericVector& xin,NumericVector& yin,double N,
   for(int i=0;i<xsize;++i){
     String tname=xnames[i];
     std::vector<double>xres;
-    xres.push_back(xin[tname]-1);
+    xres.push_back((xin[tname]-1);
     xres.push_back(yin[tname]);
     xres.push_back(N-yin[tname]);
     xres.push_back(n);
