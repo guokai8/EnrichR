@@ -10,14 +10,13 @@ double hyp_test( std::vector<double>& xa) {
 //[[Rcpp::export]]
 NumericVector hyper_bench_vector(NumericVector& xin,NumericVector& yin,double N,double n){
   int xsize=xin.size();
-  double xt;
+  //double xt;
   NumericVector res;
   StringVector xnames=xin.names();
   for(int i=0;i<xsize;++i){
     String tname=xnames[i];
     std::vector<double>xres;
-    xt=xin[tname]-1.0;
-    xres.push_back(xt);
+    xres.push_back(xin[tname]-1.0);
     xres.push_back(yin[tname]);
     xres.push_back(N-yin[tname]);
     xres.push_back(n);
