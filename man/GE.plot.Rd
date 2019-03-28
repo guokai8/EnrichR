@@ -5,11 +5,28 @@
 \title{Display GO enrichment result}
 \usage{
 GE.plot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  font.x = "bold", font.y = "bold", fontsize.x = 10,
+  horiz = FALSE, font.x = "bold", font.y = "bold", fontsize.x = 10,
   fontsize.y = 10, fontsize.text = 3, angle = 75,
-  padj.cutoff = NULL, usePadj = TRUE, filename = NULL)
+  padj.cutoff = NULL, usePadj = TRUE, filename = NULL, width = 10,
+  height = 8)
 }
 \arguments{
+\item{order}{order bar or not}
+
+\item{horiz}{use horiz or not}
+
+\item{fontsize.x}{fontsize for x axis}
+
+\item{fontsize.y}{fontsize for y axis}
+
+\item{usePadj}{use adjust pvalue or not}
+
+\item{filename}{output filename}
+
+\item{width}{width for output file}
+
+\item{height}{height for output file}
+
 \item{resultFis:}{GO ennrichment analysis result data.frame}
 
 \item{top:}{Number of Terms you want to display}

@@ -7,18 +7,34 @@
 KE.plot(resultFis, pvalue.cutoff = 0.05, top = 50, order = FALSE,
   font.x = "bold", font.y = "bold", fontsize.x = 10,
   fontsize.y = 10, padj.cutoff = NULL, usePadj = TRUE,
-  filename = NULL)
+  filename = NULL, width = 10, height = 8)
 }
 \arguments{
+\item{order}{order bar or not}
+
+\item{fontsize.x}{fontsize for x axis}
+
+\item{fontsize.y}{fontsize for y axis}
+
+\item{usePadj}{use adjust pvalue or not}
+
+\item{filename}{output filename}
+
+\item{width}{width for output file}
+
+\item{height}{height for output file}
+
 \item{resultFis:}{KEGG ennrichment analysis result data.frame}
 
 \item{top:}{Number of Terms you want to display}
 
-\item{filenam:}{output filename}
+\item{filename:}{output filename}
 
 \item{pvalue.cutoff:}{the cut-off value for selecting Term}
 
 \item{padj.cutoff:}{the padj cut-off value for selecting Term}
+
+\item{horiz}{use horiz or not}
 }
 \description{
 Display KEGG enrichment result
