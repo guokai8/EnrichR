@@ -50,9 +50,17 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
 #' @param  filenam: output filename
 #' @param  pvalue.cutoff: the cut-off value for selecting Term
 #' @param  padj.cutoff: the padj cut-off value for selecting Term
+#' @param usePadj use adjust pvalue or not
+#' @param order order bar or not
+#' @param horiz use horiz or not
+#' @param fontsize.x fontsize for x axis
+#' @param fontsize.y fontsize for y axis
+#' @param filename output filename
+#' @param width width for output file
+#' @param height height for output file
 #' @export
 #' @author Kai Guo
-GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL){
+GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){
     require(ggplot2)
     if(!is.null(padj.cutoff)){
       resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -75,17 +83,28 @@ GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,font.x="bold",
       p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Pvalue))))
       p<-p+scale_fill_gradient(low="lightpink",high="red")+theme_light()+
         theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
-      p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
-      print(p)
+       if(horiz==TRUE){
+        p<-p+coord_flip()
+        p<-p+geom_text(aes(label=Significant),hjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
+       }else{
+         p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
+      }
+      return(p)
     }else{
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Padj))))
     p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Padj)")
-    p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
-    print(p)
+    if(horiz==TRUE){
+      p<-p+coord_flip()
+      p<-p+geom_text(aes(label=Significant),hjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
+
+    }else{
+      p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
+    }
+        return(p)
     }
     if(!is.null(filename)){
-      ggsave(p,file=paste(filename,OP,"enrich.pdf",sep="_"),width=10,height=8)
+      ggsave(p,file=paste(filename,OP,"enrich.pdf",sep="_"),width=width,height=height)
     }
 }
 
