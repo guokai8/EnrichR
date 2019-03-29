@@ -86,23 +86,25 @@ enrichbar<-function(resultFis,top=50,pvalue.cutoff=0.05,padj.cutoff=NULL,order=F
   }
   if(usePadj==FALSE){
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Pvalue))))
-    p<-p+scale_fill_gradient(low="lightpink",high="red")+theme_light()+
-      theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
-    if(horiz==TRUE){
+    p<-p+scale_fill_gradient(low="lightpink",high="red")+theme_light()
+      if(horiz==TRUE){
+      p<-p+theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Pvalue)")
       p<-p+coord_flip()
       p<-p+geom_text(aes(label=Significant),hjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     }else{
+      p<-p+theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
       p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     }
     return(p)
   }else{
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Padj))))
-    p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()+
-      theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Padj)")
-    if(horiz==TRUE){
+    p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()
+      if(horiz==TRUE){
+      p<-p+theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Pvalue)")
       p<-p+coord_flip()
       p<-p+geom_text(aes(label=Significant),hjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     }else{
+      p<-p+theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
       p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     }
     return(p)
