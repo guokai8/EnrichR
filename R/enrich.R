@@ -110,7 +110,7 @@ enrichbar<-function(resultFis,top=50,pvalue.cutoff=0.05,padj.cutoff=NULL,order=F
     print(p)
   }
   if(!is.null(filename)){
-    ggsave(p,file=paste(filename,"enrich.pdf",sep="_"),width=width,height=height)
+    ggsave(p,file=paste(filename,"barplot.pdf",sep="_"),width=width,height=height)
   }
 }
 #' Display enrichment result By using dotchart
@@ -156,7 +156,7 @@ enrichdot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,padj.cutoff=
       print(p)
     }
       if(!is.null(filename)){
-        ggsave(p,file=paste(filename,"KEGG.pdf",sep="_"),width=width,height=height)
+        ggsave(p,file=paste(filename,"dotplot.pdf",sep="_"),width=width,height=height)
       }
     }else{
       cat("No Pathway enrichment results were found!\n")
