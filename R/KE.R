@@ -1,6 +1,7 @@
 #' KEGG Pathway Enrichment analysis function
 #' @param df: DGE files (DESeq2 result files) or vector contains gene names
 #' @param KG_FILE: KEGG Pathway annotation data
+#' @param builtin set FALSE to use newest version KEGG database
 #' @param filenam: output filename
 #' @param cutoff: DGE singificant cutoff value
 #' @export
