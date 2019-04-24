@@ -8,7 +8,16 @@
   if(ont=="MF") res<-as.data.frame(dplyr::filter(go_dat,ONTOLOGY=="MF"))
   return(res)
 }
-.get_kg_dat<-function(){
-   data(kegg)
-   return(kegg.db)
+.get_kg_dat<-function(builtin=TRUE){
+   if(isTRUE(builtin)){
+      data(kegg)
+      return(kegg.db)
+     }else{
+     require(KEGGREST)
+     pathway<-cbind(keggList('pathway'))
+     rownames(pathway)<-sub('path:map','',rownames(pathway))
+     colnames(pathway)<-"annotation"
+     pathway<-as.data.frame(pathway)
+     return(pathway)
+     }
 }
