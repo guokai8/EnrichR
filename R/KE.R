@@ -4,7 +4,7 @@
 #' @param filenam: output filename
 #' @param cutoff: DGE singificant cutoff value
 #' @export
-KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",cutoff=0.05){
+KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,padj.method="BH",cutoff=0.05,builtin=TRUE){
   suppressMessages(require(tidyr))
   ko2gene<-sf(KO_FILE)
   ko2gene_num<-name_table(ko2gene)
@@ -22,7 +22,7 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
   N=length(unique(KO_FILE[,1]))
   rhs<-hyper_bench_vector(k,M,N,n)
   lhs<-p.adjust(rhs,method=padj.method)
-  all_ko<-.get_kg_dat()
+  all_ko<-.get_kg_dat(builtin=builtin)
  # rhs_an<-all_ko[rownames(all_ko)%in%names(rhs),]
   rhs_an<-all_ko[names(rhs),]
   rhs_gene<-unlist(lapply(fko2gene, function(x)paste(unique(x),sep="",collapse = ",")))
