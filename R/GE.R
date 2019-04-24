@@ -95,12 +95,12 @@ GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,fo
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Padj))))
     p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()
       if(horiz==TRUE){
-      p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Pvalue)")
+      p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Padj)")
       p<-p+coord_flip()
       p<-p+geom_text(aes(label=Significant),hjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
 
     }else{
-      p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Pvalue)")
+      p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle,vjust=1,hjust=1))+labs(fill="-log10(Padj)")
       p<-p+geom_text(aes(label=Significant),vjust=-0.3,size=fontsize.text)+xlab("Annotation")+ylab("Rich Factor")+ylim(0,yheight)
     }
         print(p)
