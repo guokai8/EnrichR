@@ -29,7 +29,7 @@
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt",
                 vertex.label.color = "black", vertex.label.cex = 2,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
-                width=7,height=7,segment.size=0.2,simplify=FALSE,...)
+                width=7,height=7,segment.size=0.2,...)
 {
   options(stringsAsFactors = F)
   suppressMessages(library(reshape2))
@@ -113,9 +113,6 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   }
   cols <- .color_scale("red", "orange")
   V(g)$color <- cols[sapply(pvalue, .getIdx, min(pvalue), max(pvalue))]
-  if(isTRUE(simplify)){
-    g<-igraph::simplify(g)
-  }
   g <- igraph::delete.edges(g, E(g)[wn[, 3] < weightcut])
   gs <- rhs$Significant
   if (useTerm == TRUE) {
