@@ -26,7 +26,7 @@ showplant()
 # Make the GO and KEGG Pathway data for your analysis
 # find suitable species name by using showensemble()    
 hsa_go<-makeGOdat(species="human",keytype="SYMBOL")
-hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
+hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL",builtin = F)
 # find suitable species name supported by reactome by using showAvailableRO()
 # if you want have RO data just run
 # hsa_ro<-makeROdata(species = "Homo_sapiens") 
@@ -49,7 +49,7 @@ ____
 
 ### Functional Enrichment Analysis
 #### Gene ontology enrichment analysis
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Gene ontology enrichment analysis results"}
+```{r,fig.height=6,fig.width=6,fig.align="center",,fig.cap="Gene ontology enrichment analysis results"}
 df<-data.frame(gene=sample(unique(hsa_go$SYMBOL),2000),padj=abs(rnorm(2000,0,0.01)))
 rownames(df)<-df$gene
 res<-GE(df,GO_FILE = hsa_go,gene.cutoff = 0.01)
@@ -60,9 +60,9 @@ GE.plot(resultFis =res,top=20,usePadj=F,pvalue.cutoff=0.05)
 ## Rich Factor: The proportion of numbers of genes in specific GO terms and numbers of all genes in the specific GO terms among the whole genomes. Color scale indicates significance level. 
 ``` 
 #### KEGG pathway enrichment analysis
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="KEGG pathway enrichment analysis results"}  
+```{r,fig.height=6,fig.width=6,fig.align="center",fig.cap="KEGG pathway enrichment analysis results"}  
 ## KEGG pathway Enrichment analysis results
-resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
+resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05,builtin = F)
 head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 ## Size indicates gene numbers in specific KEGG pathway          
@@ -71,14 +71,14 @@ KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 ### Network Generation with enrichment results 
 You can also get network graphic for any type of enrichment analysis result and also combine different enrichment result
 
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}     
+```{r,fig.height=6,fig.width=6,fig.align="center",fig.cap="Functional relation network"}     
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
 ## df could be the vector you used for enrichment analysis
 ```          
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}
+```{r,fig.height=6,fig.width=6,fig.align="center",fig.cap="Functional relation network"}
 gnet(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,vertex.label.cex=4)
 ```    
-```{r,fig.height=6,fig.width=6,fig.align="center",dpi=300,fig.cap="Functional relation network"}
+```{r,fig.height=6,fig.width=6,fig.align="center",fig.cap="Functional relation network"}
 mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 ```       
 #### Get details include the input information   
@@ -86,6 +86,6 @@ mnetmap(df=df,gores=res[1:30,],kores=resk,pvalue.cutoff = 0.05,top=50)
 resgo<-getdetail(res,df);
 head(resgo,6);
 resko<-getdetail(resk,df);
-head(resko,6);
+head(resko,6)
 ```           
 ## Have funs!
