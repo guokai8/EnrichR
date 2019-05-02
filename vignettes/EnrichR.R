@@ -8,7 +8,7 @@ showplant()
 # Make the GO and KEGG Pathway data for your analysis
 # find suitable species name by using showensemble()    
 hsa_go<-makeGOdat(species="human",keytype="SYMBOL")
-hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL")
+hsa_ko<-makeKOdat(species = "human",keytype="SYMBOL",builtin = F)
 # find suitable species name supported by reactome by using showAvailableRO()
 # hsa_ro<-makeROdata(species = "Homo_sapiens") 
 
@@ -30,10 +30,12 @@ head(res)
 
 ## ----fig.height=6,fig.width=6,fig.align="center"-------------------------
 GE.plot(resultFis =res,top=20,usePadj=F,pvalue.cutoff=0.05)
-resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05)
+resk<-KE(df,KO_FILE = hsa_ko,gene.cutoff = 0.05,builtin = F)
 head(resk)
 KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 
+## ----fig.height=6,fig.width=6,fig.align="center",dpi=300-----------------
+richplot(res,usePadj=F,top=20)
 ## ----fig.height=6,fig.width=6,fig.align="center",dpi=300-----------------
 ###df could also be a vector of the genes you used for enrichment analysis
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
