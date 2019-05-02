@@ -21,8 +21,8 @@ set.seed(1234)
 library(EnrichR)   
 # To check if your the current species if supported !!!
 showData()   
-showensemble()  
-showplant()
+#showensemble()  
+#showplant()
 # Make the GO and KEGG Pathway data for your analysis
 # find suitable species name by using showensemble()    
 hsa_go<-makeGOdat(species="human",keytype="SYMBOL")
@@ -70,7 +70,9 @@ KE.plot(resultFis = resk,top=10,pvalue.cutoff = 0.05)
 ```   
 ### Network Generation with enrichment results 
 You can also get network graphic for any type of enrichment analysis result and also combine different enrichment result
-
+```{r,fig.height=6,fig.width=6}
+richplot(res,top=20,usePadj=F)
+```
 ```{r,fig.height=6,fig.width=6,fig.align="center",fig.cap="Functional relation network"}     
 netmap(df=df,rhs=res,top=20,pvalue.cutoff = 0.05,weightcut = 0.01,visNet = T,nodeselect=T)
 ## df could be the vector you used for enrichment analysis
