@@ -31,8 +31,7 @@ mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
      top.display=nrow(rhs)
    }
    if(gnet==TRUE){
-     gnet(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,
-          vertex.node.shape=vertex.node.shape,...)
+     gnet(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,vertex.node.shape=vertex.node.shape,...)
 
    }else{
      netmap(df,rhs,top=top.display,pvalue.cutoff = pvalue.cutoff,padj.cutoff = padj.cutoff,visNet=visNet,weightcut = weightcut,useTerm=TRUE,layout=NULL,...)
