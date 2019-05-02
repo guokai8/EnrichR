@@ -9,15 +9,15 @@ lheatmap(rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,
   ...)
 }
 \arguments{
-\item{rhs:list}{of enrchment analysis result among DEG groups}
+\item{top}{the number of Terms you want to display}
 
-\item{top:}{the number of Terms you want to display}
+\item{colnames}{the compare DEG group names}
 
-\item{colnames:}{the compare DEG group names}
+\item{xsize}{cex of group name}
 
-\item{xsize:}{cex of group name}
+\item{ysize}{cex of Terms name}
 
-\item{ysize:}{cex of Terms name}
+\item{rhslist}{of enrchment analysis result among DEG groups}
 }
 \description{
 Plot compare heatmap of Enrichment result among DEG groups

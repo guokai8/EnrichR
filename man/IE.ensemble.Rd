@@ -9,13 +9,23 @@ IE.ensemble(df, IO_FILE, gene.cutoff = 0.01, minSize = 2,
   filename = NULL, cutoff = 0.05)
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{IO_FILE:}{InterPro annotation data, you can get the data by using makeesanno function}
+\item{IO_FILE}{InterPro annotation data}
 
-\item{filename:}{output filename}
+\item{gene.cutoff}{the cut-off value for select DEGs (default: 0.01)}
 
-\item{gene.cutoff:}{DGE singificant cutoff value}
+\item{minSize}{minimal number of genes included in significant terms}
+
+\item{maxSize}{maximum number of genes included in significant terms}
+
+\item{keepRich}{keep terms with rich factor value equal 1 or not (default: TRUE)}
+
+\item{padj.method}{p value adjust method (default: BH)}
+
+\item{filename}{output filename}
+
+\item{cutoff}{cutoff value for filtering significant terms (default: 0.05)}
 }
 \description{
 InterPro Enrichment analysis function

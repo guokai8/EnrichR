@@ -19,6 +19,8 @@ GE.plot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
 
 \item{fontsize.y}{fontsize for y axis}
 
+\item{angle}{angle for x ticks label}
+
 \item{usePadj}{use adjust pvalue or not}
 
 \item{filename}{output filename}
@@ -31,11 +33,13 @@ GE.plot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
 
 \item{top:}{Number of Terms you want to display}
 
-\item{filenam:}{output filename}
+\item{filename:}{output filename}
 
 \item{pvalue.cutoff:}{the cut-off value for selecting Term}
 
 \item{padj.cutoff:}{the padj cut-off value for selecting Term}
+
+\item{horiz}{horizontal plot or not (default: FALSE)}
 }
 \description{
 Display GO enrichment result

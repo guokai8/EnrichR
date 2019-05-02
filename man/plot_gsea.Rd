@@ -8,11 +8,11 @@
 plot_fgsea(term, x, annot)
 }
 \arguments{
-\item{x:}{a vector include all log2FC with gene name}
+\item{term}{the significant term}
 
-\item{annot:}{annotation file for all genes}
+\item{x}{a vector include all log2FC with gene name}
 
-\item{term:}{the significant term}
+\item{annot}{annotation file for all genes}
 }
 \description{
 plot the gsea result

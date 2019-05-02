@@ -6,16 +6,28 @@
 \usage{
 KE(df, KO_FILE, filename = NULL, gene.cutoff = 0.01, minSize = 2,
   maxSize = 500, keepRich = TRUE, padj.method = "BH",
-  cutoff = 0.05)
+  cutoff = 0.05, builtin = TRUE)
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{KG_FILE:}{KEGG Pathway annotation data}
+\item{KO_FILE}{KEGG annotation data}
 
-\item{filenam:}{output filename}
+\item{filename}{output filename}
 
-\item{cutoff:}{DGE singificant cutoff value}
+\item{gene.cutoff}{the cut-off value for select DEGs (default: 0.01)}
+
+\item{minSize}{minimal number of genes included in significant terms}
+
+\item{maxSize}{maximum number of genes included in significant terms}
+
+\item{keepRich}{keep terms with rich factor value equal 1 or not (default: TRUE)}
+
+\item{padj.method}{p value adjust method (default: BH)}
+
+\item{cutoff}{cutoff value for filtering significant terms (default: 0.05)}
+
+\item{bulitin}{use KEGG bulit in KEGG annotation or not(set FALSE if you want use newest KEGG data)}
 }
 \description{
 KEGG Pathway Enrichment analysis function

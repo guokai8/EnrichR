@@ -9,13 +9,23 @@ RE.plant(df, RO_FILE, gene.cutoff = 0.01, padj.method = "BH",
   cutoff = 0.05)
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{RO_FILE:}{Reactome Pathway annotation data, you can get the data by use makeROdata or makePlantROdat function}
+\item{RO_FILE}{GO annotation data}
 
-\item{filename:}{output filename}
+\item{gene.cutoff}{the cut-off value for select DEGs (default: 0.01)}
 
-\item{gene.cutoff:}{DGE singificant cutoff value}
+\item{padj.method}{p value adjust method (default: BH)}
+
+\item{minSize}{minimal number of genes included in significant terms}
+
+\item{maxSize}{maximum number of genes included in significant terms}
+
+\item{keepRich}{keep terms with rich factor value equal 1 or not (default: TRUE)}
+
+\item{filename}{output filename}
+
+\item{cutoff}{cutoff value for filtering significant terms (default: 0.05)}
 }
 \description{
 Reactome Pathway Enrichment analysis function for plant

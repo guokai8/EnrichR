@@ -7,11 +7,11 @@
 DE(df, keytype = "SYMBOL", padj.method = "BH", filename = NULL)
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{filename:}{output filename}
+\item{keytype}{Keytype}
 
-\item{gene.cutoff:}{DGE singificant cutoff value}
+\item{filename}{output filename}
 }
 \description{
 Disease Ontology Enrichment analysis function

@@ -7,11 +7,13 @@
 idconvert(species, keys, fkeytype, tkeytype)
 }
 \arguments{
-\item{species:}{you can check the support species by using showData()}
+\item{species}{you can check the support species by using showData()}
 
-\item{fkeytype:}{the gene type you want to convert}
+\item{keys}{input genes}
 
-\item{tkeytype:}{the gene type you want to get}
+\item{fkeytype}{the gene type you want to convert}
+
+\item{tkeytype}{the gene type you want to get}
 }
 \description{
 Convert ID between ENTREZID to SYMBOL or other type ID based on bioconductor annotation package

@@ -14,41 +14,41 @@ netmap(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   filename = "network", ...)
 }
 \arguments{
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
+
+\item{rhs}{Enrichment analsyis result}
+
+\item{top}{number of Terms you want to display}
+
+\item{pvalue.cutoff}{the cut-off P value for selecting significant Terms}
+
+\item{padj.cutoff}{the cut-off P adjust value for selecting significant Terms}
+
+\item{weightcut}{the weight cut value for remove edges}
+
+\item{useTerm}{use the Term description or not(defalutTRUE)}
+
+\item{writeCyt}{export file for Cyt software}
+
+\item{vertex.label.color}{color of label(defaultblack)}
+
+\item{vertex.label.cex}{size of label(default0.5)}
+
+\item{layout}{layout format (defultlayout.fruchterman.reingold)}
+
+\item{visNet}{use VisNetwork method to display network(defaultFALSE)}
+
 \item{smooth}{use smooth edge for visNetwork}
 
-\item{nodeselect}{select some interesting node(default:FALSE)}
+\item{nodeselect}{select some interesting node(defaultFALSE)}
 
-\item{editvis}{choose to edit network(default:FALSE)}
+\item{editvis}{choose to edit network(defaultFALSE)}
 
 \item{savevis}{save visnetwork to html}
 
 \item{savefig}{save figure to pdf}
 
 \item{filename}{output filename}
-
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
-
-\item{rhs:}{Enrichment analsyis result}
-
-\item{pvalue.cutoff:}{the cut-off P value for selecting significant Terms}
-
-\item{padj.cutoff:}{the cut-off P adjust value for selecting significant Terms}
-
-\item{weightcut:}{the weight cut value for remove edges}
-
-\item{useTerm:}{use the Term description or not(defalut:TRUE)}
-
-\item{writeCyt:}{export file for Cyt software}
-
-\item{vertex.label.color:}{color of label(default:black)}
-
-\item{vertex.label.cex:}{size of label(default:0.5)}
-
-\item{layout:}{layout format (defult:layout.fruchterman.reingold)}
-
-\item{visNet:}{use VisNetwork method to display network(default:FALSE)}
-
-\item{top:}{number of Terms you want to display}
 }
 \description{
 Plot network of Terms

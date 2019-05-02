@@ -9,13 +9,25 @@ GE(df, GO_FILE, OP = "BP", gene.cutoff = 0.01, minSize = 2,
   padj.method = "BH", cutoff = 0.05)
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{GO_FILE:}{GO annotation data}
+\item{GO_FILE}{GO annotation data}
 
-\item{filenam:}{output filename}
+\item{OP}{use BP,CC or MF}
 
-\item{gene.cutoff:}{the cut-off value for select DGE}
+\item{gene.cutoff}{the cut-off value for select DEGs (default: 0.01)}
+
+\item{minSize}{minimal number of genes included in significant terms}
+
+\item{maxSize}{maximum number of genes included in significant terms}
+
+\item{keepRich}{keep terms with rich factor value equal 1 or not (default: TRUE)}
+
+\item{filename}{output filename}
+
+\item{padj.method}{p value adjust method (default: BH)}
+
+\item{cutoff}{cutoff value for filtering significant terms (default: 0.05)}
 }
 \description{
 GO Enrichment analysis function

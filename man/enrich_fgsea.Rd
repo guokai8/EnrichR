@@ -8,21 +8,21 @@ enrich_fgsea(x, annot, annot.info = NULL, minSize = 15,
   maxSize = 500, nperm = 5000, filename = NULL, padj.method = "BH")
 }
 \arguments{
-\item{x:}{a vector include all log2FC with gene name}
+\item{x}{a vector include all log2FC with gene name}
 
-\item{annot:}{annotation file for all genes}
+\item{annot}{annotation file for all genes}
 
-\item{annot.info:}{Term of all annotation}
+\item{annot.info}{Term of all annotation}
 
-\item{filenam:}{output filename}
+\item{minSize}{Minimal size of a gene set to test. All pathways below the threshold are excluded.}
 
-\item{padj.method:}{p value adjust method}
+\item{maxSize}{Maximal size of a gene set to test. All pathways above the threshold are excluded.}
 
-\item{nperm:}{Number of permutations to do. Minimial possible nominal p-value is about 1/nperm}
+\item{nperm}{Number of permutations to do. Minimial possible nominal p-value is about 1/nperm}
 
-\item{minSize:}{Minimal size of a gene set to test. All pathways below the threshold are excluded.}
+\item{padj.method}{p value adjust method}
 
-\item{maxSize:}{Maximal size of a gene set to test. All pathways above the threshold are excluded.}
+\item{filenam}{output filename}
 }
 \description{
 Enrichment analysis for any type of annotation data

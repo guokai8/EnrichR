@@ -7,9 +7,9 @@
 makeGOdat(species = "human", keytype = "ENTREZID")
 }
 \arguments{
-\item{species:}{you can check the support species by using showData()}
+\item{species}{you can check the support species by using showData()}
 
-\item{keytype:}{the gene type}
+\item{keytype}{the gene ID type}
 }
 \description{
 make GO annotation data function

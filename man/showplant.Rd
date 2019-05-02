@@ -7,11 +7,11 @@
 showplant(host = "plants.ensembl.org")
 }
 \arguments{
-\item{host:}{the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org}
+\item{host}{the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org}
 
-\item{species:}{the sepcies you want to search}
+\item{species}{the species you want to search}
 
-\item{ann_type:}{the type of function annotation you want get from ensemble}
+\item{ann_type}{the type of function annotation you want get from ensemble}
 }
 \description{
 Show avaliable plant annotation based on ENSEMBLE

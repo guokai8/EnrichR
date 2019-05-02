@@ -12,39 +12,39 @@ mnetmap(df, gores = NULL, kores = NULL, rores = NULL, pfres = NULL,
   ...)
 }
 \arguments{
-\item{vertex.node.shape}{vector of shape and names of the vector should be the terms (default: 20)}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{gores}{GO Enrichment analsyis result}
 
-\item{gores:}{GO Enrichment analsyis result}
+\item{kores}{KEGG Enrichment analsyis result}
 
-\item{kores:}{KEGG Enrichment analsyis result}
+\item{rores}{Reactome Pathway Enrichment analsyis result}
 
-\item{rores:}{Reactome Pathway Enrichment analsyis result}
+\item{pfres}{PFAM Enrichment analysis result result}
 
-\item{pfres:}{PFAM Enrichment analysis result result}
+\item{itres}{InterPro Enrichment analysis result}
 
-\item{itres:}{InterPro Enrichment analysis result}
+\item{top}{number of Terms you want to display(defaultthe total number of all Significant number)}
 
-\item{pvalue.cutoff:}{the cut-off P value for selecting significant Terms}
+\item{pvalue.cutoff}{the cut-off P value for selecting significant Terms}
 
-\item{padj.cutoff:}{the cut-off P adjust value for selecting significant Terms}
+\item{padj.cutoff}{the cut-off P adjust value for selecting significant Terms}
 
-\item{weightcut:}{the weight cut value for remove edges}
+\item{visNet}{use VisNetwork method to display network(defaultFALSE)}
 
-\item{useTerm:}{use the Term description or not(defalut:TRUE)}
+\item{weightcut}{the weight cut value for remove edges}
 
-\item{writeCyt:}{export file for Cyt software}
+\item{useTerm}{use the Term description or not(defalutTRUE)}
 
-\item{vertex.label.color:}{color of label(default:black)}
+\item{layout}{layout format (defultlayout.fruchterman.reingold)}
 
-\item{vertex.label.cex:}{size of label(default:0.5)}
+\item{vertex.label.cex}{size of label(default0.5)}
 
-\item{layout:}{layout format (defult:layout.fruchterman.reingold)}
+\item{vertex.node.shape}{vector of shape and names of the vector should be the terms (default 20)}
 
-\item{visNet:}{use VisNetwork method to display network(default:FALSE)}
+\item{writeCyt}{export file for Cyt software}
 
-\item{top:}{number of Terms you want to display(default:the total number of all Significant number)}
+\item{vertex.label.color}{color of label(defaultblack)}
 }
 \description{
 plot combine network of Terms
