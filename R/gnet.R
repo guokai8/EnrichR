@@ -23,13 +23,14 @@
 ##' @param filename output figure name
 ##' @param width width for output figure
 ##' @param height height for output figure
+##' @param node.alpha alpha-transparency scales
 ##' @export
 ##' @author Kai Guo
 
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt",
                 vertex.label.color = "black", vertex.label.cex = 2,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
-                width=7,height=7,segment.size=0.2,...)
+                width=7,height=7,segment.size=0.2,node.alpha=0.7,...)
 {
   options(stringsAsFactors = F)
   suppressMessages(library(reshape2))
@@ -132,7 +133,7 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   }
 
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
-         edge.size = E(g)$width/10,node.shape=node.shape) +
+         edge.size = E(g)$width/10,node.shape=node.shape,node.alpha=node.alpha) +
     geom_text_repel(label = V(g)$name,
                   size=vertex.label.cex,segment.size=segment.size,color=vertex.label.color)+
     theme(legend.position = "none")
