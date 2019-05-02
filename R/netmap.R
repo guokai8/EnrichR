@@ -1,22 +1,22 @@
 #' Plot network of Terms
-#' @param df: DGE files (DESeq2 result files) or vector contains gene names
-#' @param rhs: Enrichment analsyis result
-#' @param pvalue.cutoff: the cut-off P value for selecting significant Terms
-#' @param padj.cutoff: the cut-off P adjust value for selecting significant Terms
-#' @param weightcut: the weight cut value for remove edges
-#' @param useTerm: use the Term description or not(defalut:TRUE)
-#' @param writeCyt: export file for Cyt software
-#' @param vertex.label.color: color of label(default:black)
-#' @param vertex.label.cex: size of label(default:0.5)
-#' @param layout: layout format (defult:layout.fruchterman.reingold)
-#' @param visNet: use VisNetwork method to display network(default:FALSE)
+#' @param df DGE files (DESeq2 result files) or vector contains gene names
+#' @param rhs Enrichment analsyis result
+#' @param pvalue.cutoff the cut-off P value for selecting significant Terms
+#' @param padj.cutoff the cut-off P adjust value for selecting significant Terms
+#' @param weightcut the weight cut value for remove edges
+#' @param useTerm use the Term description or not(defalutTRUE)
+#' @param writeCyt export file for Cyt software
+#' @param vertex.label.color color of label(defaultblack)
+#' @param vertex.label.cex size of label(default0.5)
+#' @param layout layout format (defultlayout.fruchterman.reingold)
+#' @param visNet use VisNetwork method to display network(defaultFALSE)
 #' @param smooth use smooth edge for visNetwork
-#' @param nodeselect select some interesting node(default:FALSE)
-#' @param editvis choose to edit network(default:FALSE)
+#' @param nodeselect select some interesting node(defaultFALSE)
+#' @param editvis choose to edit network(defaultFALSE)
 #' @param savevis save visnetwork to html
 #' @param savefig save figure to pdf
 #' @param filename output filename
-#' @param top: number of Terms you want to display
+#' @param top number of Terms you want to display
 #' @export
 #' @author Kai Guo
 netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,

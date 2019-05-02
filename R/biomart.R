@@ -1,7 +1,7 @@
 #' Show avaliable plant annotation based on ENSEMBLE
-#' @param  host: the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
-#' @param  species: the sepcies you want to search
-#' @param  ann_type: the type of function annotation you want get from ensemble
+#' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
+#' @param species the species you want to search
+#' @param ann_type the type of function annotation you want get from ensemble
 #' @export
 #' @author Kai Guo
 showplant<-function(host="plants.ensembl.org"){
@@ -12,8 +12,8 @@ showplant<-function(host="plants.ensembl.org"){
   res
 }
 #' Show avaliable annotation except plant based on ENSEMBLE
-#' @param  host: the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
-#' @param  species: the sepcies you want to search
+#' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
+#' @param species the sepcies you want to search
 #' @export
 #' @author Kai Guo
 showensemble<-function(host="uswest.ensembl.org"){
@@ -26,9 +26,9 @@ showensemble<-function(host="uswest.ensembl.org"){
   res
 }
 #' make plant annotation data based on ENSEMBLE
-#' @param  host: the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
-#' @param  species: the sepcies you want to search, you can use showplant to get the species name
-#' @param  ann_type: the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
+#' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
+#' @param species the sepcies you want to search, you can use showplant to get the species name
+#' @param ann_type the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
 #' @export
 #' @author Kai Guo
 makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_type="GO"){
@@ -56,9 +56,9 @@ makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_typ
   return(res)
 }
 #' make annotation data except plant based on ENSEMBLE
-#' @param  host: the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
-#' @param  species: the sepcies you want to search, you can use showplant to get the species name
-#' @param  ann_type: the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
+#' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
+#' @param species the species you want to search, you can use showplant to get the species name
+#' @param ann_type the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
 #' @export
 #' @author Kai Guo
 makeesanno<-function(species="Human",host="uswest.ensembl.org",ann_type="GO"){

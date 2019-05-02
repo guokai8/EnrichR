@@ -1,7 +1,7 @@
 #' Disease Ontology Enrichment analysis function
-#' @param df: DGE files (DESeq2 result files) or vector contains gene names
-#' @param filename: output filename
-#' @param gene.cutoff: DGE singificant cutoff value
+#' @param df DGE files (DESeq2 result files) or vector contains gene names
+#' @param keytype Keytype
+#' @param filename output filename
 #' @export
 #' @author Kai Guo
 DE<-function(df, keytype = "SYMBOL",padj.method = "BH", filename = NULL) {

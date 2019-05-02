@@ -1,8 +1,14 @@
 #' GO Enrichment analysis function
-#' @param  df: DGE files (DESeq2 result files) or vector contains gene names
-#' @param  GO_FILE: GO annotation data
-#' @param  filenam: output filename
-#' @param  gene.cutoff: the cut-off value for select DGE
+#' @param df DGE files (DESeq2 result files) or vector contains gene names
+#' @param GO_FILE GO annotation data
+#' @param OP use BP,CC or MF
+#' @param minSize minimal number of genes included in significant terms
+#' @param padj.method p value adjust method (default: BH)
+#' @param cutoff cutoff value for filtering significant terms (default: 0.05)
+#' @param maxSize maximum number of genes included in significant terms
+#' @param keepRich keep terms with rich factor value equal 1 or not (default: TRUE)
+#' @param filename output filename
+#' @param gene.cutoff the cut-off value for select DEGs (default: 0.01)
 #' @export
 #' @author Kai Guo
 GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,padj.method="BH",cutoff=0.05){
@@ -45,11 +51,11 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
   return(resultFis);
 }
 #' Display GO enrichment result
-#' @param  resultFis: GO ennrichment analysis result data.frame
-#' @param  top: Number of Terms you want to display
-#' @param  filenam: output filename
-#' @param  pvalue.cutoff: the cut-off value for selecting Term
-#' @param  padj.cutoff: the padj cut-off value for selecting Term
+#' @param resultFis: GO ennrichment analysis result data.frame
+#' @param top: Number of Terms you want to display
+#' @param filename: output filename
+#' @param pvalue.cutoff: the cut-off value for selecting Term
+#' @param padj.cutoff: the padj cut-off value for selecting Term
 #' @param usePadj use adjust pvalue or not
 #' @param order order bar or not
 #' @param horiz use horiz or not
@@ -58,6 +64,8 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
 #' @param filename output filename
 #' @param width width for output file
 #' @param height height for output file
+#' @param angle angle for x ticks label
+#' @param horiz horizontal plot or not (default: FALSE)
 #' @export
 #' @author Kai Guo
 GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){

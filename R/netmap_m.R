@@ -1,21 +1,21 @@
 #' plot combine network of Terms
-#' @param df: DGE files (DESeq2 result files) or vector contains gene names
-#' @param gores: GO Enrichment analsyis result
-#' @param kores: KEGG Enrichment analsyis result
-#' @param rores: Reactome Pathway Enrichment analsyis result
-#' @param pfres: PFAM Enrichment analysis result result
-#' @param itres: InterPro Enrichment analysis result
-#' @param pvalue.cutoff: the cut-off P value for selecting significant Terms
-#' @param padj.cutoff: the cut-off P adjust value for selecting significant Terms
-#' @param weightcut: the weight cut value for remove edges
-#' @param useTerm: use the Term description or not(defalut:TRUE)
-#' @param writeCyt: export file for Cyt software
-#' @param vertex.label.color: color of label(default:black)
-#' @param vertex.label.cex: size of label(default:0.5)
-#' @param vertex.node.shape vector of shape and names of the vector should be the terms (default: 20)
-#' @param layout: layout format (defult:layout.fruchterman.reingold)
-#' @param visNet: use VisNetwork method to display network(default:FALSE)
-#' @param top: number of Terms you want to display(default:the total number of all Significant number)
+#' @param df DGE files (DESeq2 result files) or vector contains gene names
+#' @param gores GO Enrichment analsyis result
+#' @param kores KEGG Enrichment analsyis result
+#' @param rores Reactome Pathway Enrichment analsyis result
+#' @param pfres PFAM Enrichment analysis result result
+#' @param itres InterPro Enrichment analysis result
+#' @param pvalue.cutoff the cut-off P value for selecting significant Terms
+#' @param padj.cutoff the cut-off P adjust value for selecting significant Terms
+#' @param weightcut the weight cut value for remove edges
+#' @param useTerm use the Term description or not(defalutTRUE)
+#' @param writeCyt export file for Cyt software
+#' @param vertex.label.color color of label(defaultblack)
+#' @param vertex.label.cex size of label(default0.5)
+#' @param vertex.node.shape vector of shape and names of the vector should be the terms (default 20)
+#' @param layout layout format (defultlayout.fruchterman.reingold)
+#' @param visNet use VisNetwork method to display network(defaultFALSE)
+#' @param top number of Terms you want to display(defaultthe total number of all Significant number)
 #' @export
 #' @author Kai Guo
 mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
@@ -38,11 +38,11 @@ mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
    }
 }
 #' Plot compare heatmap of Enrichment result among DEG groups
-#' @param rhs:list of enrchment analysis result among DEG groups
-#' @param top: the number of Terms you want to display
-#' @param colnames: the compare DEG group names
-#' @param xsize: cex of group name
-#' @param ysize: cex of Terms name
+#' @param rhslist of enrchment analysis result among DEG groups
+#' @param top the number of Terms you want to display
+#' @param colnames the compare DEG group names
+#' @param xsize cex of group name
+#' @param ysize cex of Terms name
 #' @export
 #' @author Kai Guo
 lheatmap<-function (rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,padj=NULL,horizontal=FALSE,pval=0.05,returnData=FALSE,...)

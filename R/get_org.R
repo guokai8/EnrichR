@@ -1,6 +1,6 @@
 #' make GO annotation data function
-#' @param species: you can check the support species by using showData()
-#' @param keytype: the gene type
+#' @param species you can check the support species by using showData()
+#' @param keytype the gene ID type
 #' @export
 #' @author Kai Guo
 makeGOdat<-function(species="human",keytype="ENTREZID"){
@@ -18,8 +18,8 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
   return(GO_FILE)
 }
 #' make KEGG annotation data function
-#' @param species: you can check the support species by using showData()
-#' @param keytype: the gene type
+#' @param species you can check the support species by using showData()
+#' @param keytype the gene ID type
 #' @export
 #' @author Kai Guo
 makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
@@ -52,9 +52,10 @@ makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
   return(KO_FILE)
 }
 #' Convert ID between ENTREZID to SYMBOL or other type ID based on bioconductor annotation package
-#' @param species: you can check the support species by using showData()
-#' @param fkeytype: the gene type you want to convert
-#' @param tkeytype: the gene type you want to get
+#' @param species you can check the support species by using showData()
+#' @param keys input genes
+#' @param fkeytype the gene type you want to convert
+#' @param tkeytype the gene type you want to get
 #' @export
 #' @author Kai Guo
 idconvert<-function(species,keys,fkeytype,tkeytype){
