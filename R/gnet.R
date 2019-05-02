@@ -29,7 +29,7 @@
 gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt",
                 vertex.label.color = "black", vertex.label.cex = 2,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
-                width=7,height=7,segment.size=0.2,...)
+                width=7,height=7,segment.size=0.2,simplify=FALSE,...)
 {
   options(stringsAsFactors = F)
   suppressMessages(library(reshape2))
@@ -130,7 +130,9 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
     node.shape=rep(20,length(V(g)$name))
     names(node.shape)<-V(g)$name
   }
-
+  if(isTRUE(simplify)){
+    g<-simplify(g)
+    }
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
          edge.size = E(g)$width/10,node.shape=node.shape) +
     geom_text_repel(label = V(g)$name,
