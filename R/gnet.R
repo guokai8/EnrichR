@@ -113,6 +113,9 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   }
   cols <- .color_scale("red", "orange")
   V(g)$color <- cols[sapply(pvalue, .getIdx, min(pvalue), max(pvalue))]
+  if(isTRUE(simplify)){
+    g<-igraph::simplify(g)
+  }
   g <- igraph::delete.edges(g, E(g)[wn[, 3] < weightcut])
   gs <- rhs$Significant
   if (useTerm == TRUE) {
@@ -130,9 +133,7 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
     node.shape=rep(20,length(V(g)$name))
     names(node.shape)<-V(g)$name
   }
-  if(isTRUE(simplify)){
-    g<-simplify(g)
-    }
+
   p<-ggnet2(g, node.size = V(g)$size, node.color = V(g)$color,
          edge.size = E(g)$width/10,node.shape=node.shape) +
     geom_text_repel(label = V(g)$name,
