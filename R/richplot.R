@@ -6,6 +6,7 @@
 ##' @importFrom igraph simplify
 ##' @importFrom ggrepel geom_text_repel
 ##' @importFrom igraph V
+##' @importFrom ggplot2 geom_text
 ##' @param resultFis Enrichment results
 ##' @param top number of terms to show (default: 50)
 ##' @param pvalue.cutoff cutoff p value for enrichment result
@@ -22,12 +23,14 @@
 ##' @param width width for output figure
 ##' @param height height for output figure
 ##' @param node.alpha alpha-transparency scales
-##' @param node.shape
+##' @param node.shape shape of the node
+##' @param repel use ggrepel text function or not
+##' @param segment.size segment size for ggrepel text
 richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, usePadj =TRUE, useTerm=TRUE,
                    writeCyt=FALSE, cytoscapeFile="network-file-for-cytoscape.txt",
                    label.color = "black", label.size = 2, node.shape=NULL,
                    layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
-                   width=7,height=7,node.alpha=0.7){
+                   width=7,height=7,node.alpha=0.7,repel=TRUE,segment.size=0.2){
     suppressMessages(library(igraph))
     if(!is.null(padj.cutoff)){
         resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -37,6 +40,7 @@ richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, use
     if(nrow(resultFis)>=top){
         resultFis<-resultFis[1:top,]
     }
+    resultFis$GeneID<-as.vector(resultFis$GeneID)
     lhs <- strsplit(resultFis$GeneID,",")
     if(isTRUE(useTerm)){
         rhs <- data.frame(from=unlist(lhs),to=rep(resultFis$Term,lapply(lhs,length)))
@@ -76,9 +80,13 @@ richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, use
     }
     p <- ggnet2(g, node.size = degree(g), node.color = V(g)$color,
                 node.shape=node.shape,legend.position = "none",
-                node.alpha=node.alpha) +
-      geom_text_repel(label = V(g)$name,size=label.size, color=label.color,
-                      segment.size=0.2)
+                node.alpha=node.alpha)
+    if(isTRUE(repel)){
+      p <- p + geom_text_repel(label = V(g)$name,size=label.size, color=label.color,
+                      segment.size=segment.size)
+    }else{
+      p <- p +geom_text(label = V(g)$name,size=label.size, color=label.color)
+    }
     print(p)
     if(savefig==TRUE){
       ggsave(p,file=paste(filename,"pdf",sep="."),width=width,height = height)
