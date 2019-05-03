@@ -147,9 +147,9 @@ netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   return(colors)
 }
 .getIdx <- function(v, MIN, MAX) { #modified from DOSE
-  if ( MIN == MAX ) {
-    return(200)
-  }
+ # if ( MIN == MAX ) {
+  #  return(200)
+ # }
   intervals <- seq(MIN, MAX, length.out=200)
   max(which(intervals <= v))
 }
