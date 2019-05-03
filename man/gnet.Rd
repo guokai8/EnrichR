@@ -10,7 +10,7 @@ gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
   vertex.label.color = "black", vertex.label.cex = 2,
   vertex.node.shape = NULL, layout = layout.fruchterman.reingold,
   savefig = FALSE, filename = "network", width = 7, height = 7,
-  segment.size = 0.2, ...)
+  segment.size = 0.2, node.alpha = 0.7, ...)
 }
 \arguments{
 \item{df}{Differential expression result or vector of genes}
@@ -48,6 +48,8 @@ gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
 \item{height}{height for output figure}
 
 \item{segment.size}{size for label segment}
+
+\item{node.alpha}{alpha-transparency scales}
 }
 \description{
 gnet provides method to draw the enrichment results with a ggplot2 style network

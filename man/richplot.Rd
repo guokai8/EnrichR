@@ -9,7 +9,8 @@ richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
   writeCyt = FALSE, cytoscapeFile = "network-file-for-cytoscape.txt",
   label.color = "black", label.size = 2, node.shape = NULL,
   layout = layout.fruchterman.reingold, savefig = FALSE,
-  filename = "network", width = 7, height = 7, node.alpha = 0.7)
+  filename = "network", width = 7, height = 7, node.alpha = 0.7,
+  repel = TRUE, segment.size = 0.2)
 }
 \arguments{
 \item{resultFis}{Enrichment results}
@@ -43,6 +44,12 @@ richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
 \item{height}{height for output figure}
 
 \item{node.alpha}{alpha-transparency scales}
+
+\item{repel}{use ggrepel text function or not}
+
+\item{segment.size}{segment size for ggrepel text}
+
+\item{node.shape}{shape of the node}
 }
 \description{
 plot the sigificant terms and shared genes with network format
