@@ -26,6 +26,7 @@
 ##' @param node.shape shape of the node
 ##' @param repel use ggrepel text function or not
 ##' @param segment.size segment size for ggrepel text
+##' @export
 richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, usePadj =TRUE, useTerm=TRUE,
                    writeCyt=FALSE, cytoscapeFile="network-file-for-cytoscape.txt",
                    label.color = "black", label.size = 2, node.shape=NULL,
