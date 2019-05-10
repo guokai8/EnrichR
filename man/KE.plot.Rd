@@ -5,7 +5,7 @@
 \title{Display KEGG enrichment result}
 \usage{
 KE.plot(resultFis, pvalue.cutoff = 0.05, top = 50, order = FALSE,
-  low = "lightpink", high = "red", font.x = "bold",
+  low = "lightpink", high = "red", alpha = 0.7, font.x = "bold",
   font.y = "bold", fontsize.x = 10, fontsize.y = 10,
   padj.cutoff = NULL, usePadj = TRUE, filename = NULL, width = 10,
   height = 8)
@@ -16,6 +16,8 @@ KE.plot(resultFis, pvalue.cutoff = 0.05, top = 50, order = FALSE,
 \item{low}{color used for small value}
 
 \item{high}{color used for large value}
+
+\item{alpha}{alpha-transparency scales}
 
 \item{fontsize.x}{fontsize for x axis}
 
