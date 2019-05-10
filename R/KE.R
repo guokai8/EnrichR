@@ -59,6 +59,7 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 #' @param order order bar or not
 #' @param low color used for small value
 #' @param high color used for large value
+#' @param alpha alpha-transparency scales
 #' @param horiz use horiz or not
 #' @param fontsize.x fontsize for x axis
 #' @param fontsize.y fontsize for y axis
@@ -68,7 +69,7 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 #' @export
 #' @author Kai Guo
 KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,
-                  low="lightpink",high="red",
+                  low="lightpink",high="red",alpha=0.7,
                 font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,
                 padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){
   library(ggplot2)
@@ -89,13 +90,13 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,
     dd$Term<-factor(dd$Term,levels=dd$Term[order(dd$rich)])
   }
   if(usePadj==FALSE){
-    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))+theme_minimal()+
+    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)),alpha=alpha)+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
     scale_colour_gradient(low=low,high=high)+ylab("Pathway name")+
     xlab("Rich factor")+labs(size="Gene number")
     print(p)
   }else{
-    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)))+theme_minimal()+
+    p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)),alpha=alpha)+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
       scale_colour_gradient(low=low,high=high)+ylab("Pathway name")+
       xlab("Rich factor")+labs(size="Gene number")

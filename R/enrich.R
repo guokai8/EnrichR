@@ -126,6 +126,7 @@ enrichbar<-function(resultFis,top=50,pvalue.cutoff=0.05,padj.cutoff=NULL,
 #' @param padj.cutoff: the padj cut-off value for selecting Term
 #' @param low color used for small value
 #' @param high color used for large value
+#' @param alpha alpha-transparency scales
 #' @param fontsize.x fontsize for x axis
 #' @param fontsize.y fontsize for y axis
 #' @param filename output filename
@@ -134,7 +135,7 @@ enrichbar<-function(resultFis,top=50,pvalue.cutoff=0.05,padj.cutoff=NULL,
 #' @export
 #' @author Kai Guo
 enrichdot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,
-                    low="lightpink",high="red",
+                    low="lightpink",high="red",alpha=0.7,
                     padj.cutoff=NULL,fontsize.x=10,fontsize.y=10,
                     usePadj=TRUE,filename=NULL,width=10,height=8){
   library(ggplot2)
@@ -154,13 +155,13 @@ enrichdot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,
       dd$Term<-factor(dd$Term,levels=dd$Term[order(dd$rich)])
     }
     if(usePadj==FALSE){
-      p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))+
+      p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)),alpha=alpha)+
         theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
         scale_colour_gradient(low=low,high=high)+theme_minimal()+ylab("Pathway name")+
         xlab("Rich factor")+labs(size="Gene number")
       print(p)
     }else{
-      p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)))+
+      p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)),alpha=alpha)+
         theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
         scale_colour_gradient(low=low,high=high)+theme_minimal()+ylab("Pathway name")+
         xlab("Rich factor")+labs(size="Gene number")
