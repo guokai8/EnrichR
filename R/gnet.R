@@ -10,6 +10,8 @@
 ##' @param top number of terms to show (default: 50)
 ##' @param pvalue.cutoff cutoff p value for enrichment result
 ##' @param padj.cutoff cutoff p adjust value for enrichment result
+##' @param low color used for small value
+##' @param high color used for large value
 ##' @param weightcut cutoff value for the edges
 ##' @param useTerm use terms for nodes (default: TRUE)
 ##' @param writeCyt write out the cytoscape file
@@ -27,7 +29,7 @@
 ##' @export
 ##' @author Kai Guo
 
-gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
+gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,low = "orange",high = "red",
                 weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt",
                 vertex.label.color = "black", vertex.label.cex = 2,vertex.node.shape=NULL, layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
                 width=7,height=7,segment.size=0.2,node.alpha=0.7,...)
@@ -112,7 +114,7 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
     idx <- unlist(sapply(V(g)$name, function(x) which(x ==
                                                         rownames(rhs))))
   }
-  cols <- .color_scale("red", "orange")
+  cols <- .color_scale(high, low)
   V(g)$color <- cols[sapply(pvalue, .getIdx, min(pvalue), max(pvalue))]
   g <- igraph::delete.edges(g, E(g)[wn[, 3] < weightcut])
   gs <- rhs$Significant

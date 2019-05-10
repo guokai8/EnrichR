@@ -3,6 +3,8 @@
 #' @param rhs Enrichment analsyis result
 #' @param pvalue.cutoff the cut-off P value for selecting significant Terms
 #' @param padj.cutoff the cut-off P adjust value for selecting significant Terms
+#' @param low color used for small value
+#' @param high color used for large value
 #' @param weightcut the weight cut value for remove edges
 #' @param useTerm use the Term description or not(defalutTRUE)
 #' @param writeCyt export file for Cyt software
@@ -19,7 +21,7 @@
 #' @param top number of Terms you want to display
 #' @export
 #' @author Kai Guo
-netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
+netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,low = "orange",high = "red",
                   weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,cytoscapeFile = "network-file-for-cytoscape.txt", vertex.label.font = 2,
                   vertex.label.color = "black", vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,
                   visNet = FALSE,smooth=TRUE,nodeselect=FALSE,editvis=FALSE,savevis=FALSE,savefig=FALSE,filename="network",...)
@@ -101,7 +103,7 @@ netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
     idx <- unlist(sapply(V(g)$name, function(x) which(x ==
                                                         rownames(rhs))))
   }
-  cols <- .color_scale("red", "orange")
+  cols <- .color_scale(high, low)
   V(g)$color <- cols[sapply(pvalue, .getIdx, min(pvalue), max(pvalue))]
   g <- igraph::delete.edges(g, E(g)[wn[, 3] < weightcut])
   gs <- rhs$Significant

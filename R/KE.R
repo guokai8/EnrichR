@@ -57,6 +57,8 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 #' @param padj.cutoff: the padj cut-off value for selecting Term
 #' @param usePadj use adjust pvalue or not
 #' @param order order bar or not
+#' @param low color used for small value
+#' @param high color used for large value
 #' @param horiz use horiz or not
 #' @param fontsize.x fontsize for x axis
 #' @param fontsize.y fontsize for y axis
@@ -65,7 +67,10 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 #' @param height height for output file
 #' @export
 #' @author Kai Guo
-KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){
+KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,
+                  low="lightpink",high="red",
+                font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,
+                padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){
   library(ggplot2)
   if(!is.null(padj.cutoff)){
     resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -86,13 +91,13 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,font.x="bold",
   if(usePadj==FALSE){
     p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)))+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
-    scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
+    scale_colour_gradient(low=low,high=high)+ylab("Pathway name")+
     xlab("Rich factor")+labs(size="Gene number")
     print(p)
   }else{
     p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)))+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
-      scale_colour_gradient(low="lightpink",high="red")+ylab("Pathway name")+
+      scale_colour_gradient(low=low,high=high)+ylab("Pathway name")+
       xlab("Rich factor")+labs(size="Gene number")
     print(p)
   }}else{

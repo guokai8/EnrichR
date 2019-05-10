@@ -57,6 +57,8 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
 #' @param pvalue.cutoff: the cut-off value for selecting Term
 #' @param padj.cutoff: the padj cut-off value for selecting Term
 #' @param usePadj use adjust pvalue or not
+#' @param low color used for small value
+#' @param high color used for large value
 #' @param order order bar or not
 #' @param horiz use horiz or not
 #' @param fontsize.x fontsize for x axis
@@ -68,7 +70,11 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
 #' @param horiz horizontal plot or not (default: FALSE)
 #' @export
 #' @author Kai Guo
-GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,filename=NULL,width=10,height=8){
+GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,
+                  low="lightpink",high="red",
+                  font.x="bold",font.y="bold",fontsize.x=10,fontsize.y=10,
+                  fontsize.text=3,angle=75,padj.cutoff=NULL,usePadj=TRUE,
+                  filename=NULL,width=10,height=8){
     require(ggplot2)
     if(!is.null(padj.cutoff)){
       resultFis<-resultFis[resultFis$Padj<padj.cutoff,]
@@ -89,7 +95,7 @@ GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,fo
     }
     if(usePadj==FALSE){
       p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Pvalue))))
-      p<-p+scale_fill_gradient(low="lightpink",high="red")+theme_light()
+      p<-p+scale_fill_gradient(low=low,high=high)+theme_light()
       if(horiz==TRUE){
         p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Pvalue)")
         p<-p+coord_flip()
@@ -101,7 +107,7 @@ GE.plot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,horiz=FALSE,fo
       print(p)
     }else{
     p<-ggplot(resultFis,aes(x=Term,y=round(as.numeric(Significant/Annotated),2)))+geom_bar(stat="identity",aes(fill=-log10(as.numeric(Padj))))
-    p<-p+scale_fill_gradient2(low="lightpink",high="red")+theme_light()
+    p<-p+scale_fill_gradient2(low=low,high=high)+theme_light()
       if(horiz==TRUE){
       p<-p+theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x,angle=angle))+labs(fill="-log10(Padj)")
       p<-p+coord_flip()
