@@ -11,6 +11,8 @@
 ##' @param top number of terms to show (default: 50)
 ##' @param pvalue.cutoff cutoff p value for enrichment result
 ##' @param padj.cutoff cutoff p adjust value for enrichment result
+##' @param low color used for small value
+##' @param high color used for large value
 ##' @param useTerm use terms for nodes (default: TRUE)
 ##' @param writeCyt write out the cytoscape file
 ##' @param cytoscapeFile output cytoscape File
@@ -27,7 +29,8 @@
 ##' @param repel use ggrepel text function or not
 ##' @param segment.size segment size for ggrepel text
 ##' @export
-richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, usePadj =TRUE, useTerm=TRUE,
+richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL,
+                usePadj =TRUE, useTerm=TRUE,low="orange",high="red",
                    writeCyt=FALSE, cytoscapeFile="network-file-for-cytoscape.txt",
                    label.color = "black", label.size = 2, node.shape=NULL,
                    layout = layout.fruchterman.reingold,savefig=FALSE,filename="network",
@@ -69,7 +72,7 @@ richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL, use
     pvalue<-c(pvalue1,pvalue2)
     g <- graph_from_data_frame(rhs, directed = F)
     pvalue = pvalue[V(g)$name]
-    cols <- .color_scale("red", "orange")
+    cols <- .color_scale(high, low)
     V(g)$color <- cols[sapply(pvalue, .getIdx, min(pvalue), max(pvalue))]
     if(!is.null(node.shape)){
       node.shape=rep(20,length(V(g)$name))
