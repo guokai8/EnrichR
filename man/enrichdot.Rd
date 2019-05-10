@@ -5,10 +5,15 @@
 \title{Display enrichment result By using dotchart}
 \usage{
 enrichdot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  padj.cutoff = NULL, fontsize.x = 10, fontsize.y = 10,
-  usePadj = TRUE, filename = NULL, width = 10, height = 8)
+  low = "lightpink", high = "red", padj.cutoff = NULL,
+  fontsize.x = 10, fontsize.y = 10, usePadj = TRUE,
+  filename = NULL, width = 10, height = 8)
 }
 \arguments{
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
+
 \item{fontsize.x}{fontsize for x axis}
 
 \item{fontsize.y}{fontsize for y axis}

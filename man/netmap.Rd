@@ -5,8 +5,8 @@
 \title{Plot network of Terms}
 \usage{
 netmap(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-  weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,
-  cytoscapeFile = "network-file-for-cytoscape.txt",
+  low = "orange", high = "red", weightcut = 0.2, useTerm = TRUE,
+  writeCyt = FALSE, cytoscapeFile = "network-file-for-cytoscape.txt",
   vertex.label.font = 2, vertex.label.color = "black",
   vertex.label.cex = 0.5, layout = layout.fruchterman.reingold,
   visNet = FALSE, smooth = TRUE, nodeselect = FALSE,
@@ -23,6 +23,10 @@ netmap(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
 \item{pvalue.cutoff}{the cut-off P value for selecting significant Terms}
 
 \item{padj.cutoff}{the cut-off P adjust value for selecting significant Terms}
+
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
 
 \item{weightcut}{the weight cut value for remove edges}
 

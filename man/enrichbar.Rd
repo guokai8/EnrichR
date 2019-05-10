@@ -5,11 +5,16 @@
 \title{Display enrichment result By using barchart}
 \usage{
 enrichbar(resultFis, top = 50, pvalue.cutoff = 0.05,
-  padj.cutoff = NULL, order = FALSE, horiz = FALSE,
-  fontsize.x = 10, fontsize.y = 10, fontsize.text = 3, angle = 75,
-  usePadj = TRUE, filename = NULL, width = 10, height = 8)
+  padj.cutoff = NULL, low = "lightpink", high = "red",
+  order = FALSE, horiz = FALSE, fontsize.x = 10, fontsize.y = 10,
+  fontsize.text = 3, angle = 75, usePadj = TRUE, filename = NULL,
+  width = 10, height = 8)
 }
 \arguments{
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
+
 \item{horiz}{show horiz or not (default: FALSE)}
 
 \item{fontsize.x}{fontsize for x axis}

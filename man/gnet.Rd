@@ -5,8 +5,8 @@
 \title{Draw network with ggplot2 style}
 \usage{
 gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-  weightcut = 0.2, useTerm = TRUE, writeCyt = FALSE,
-  cytoscapeFile = "network-file-for-cytoscape.txt",
+  low = "orange", high = "red", weightcut = 0.2, useTerm = TRUE,
+  writeCyt = FALSE, cytoscapeFile = "network-file-for-cytoscape.txt",
   vertex.label.color = "black", vertex.label.cex = 2,
   vertex.node.shape = NULL, layout = layout.fruchterman.reingold,
   savefig = FALSE, filename = "network", width = 7, height = 7,
@@ -22,6 +22,10 @@ gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
 \item{pvalue.cutoff}{cutoff p value for enrichment result}
 
 \item{padj.cutoff}{cutoff p adjust value for enrichment result}
+
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
 
 \item{weightcut}{cutoff value for the edges}
 

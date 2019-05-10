@@ -6,7 +6,8 @@
 \usage{
 richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
   padj.cutoff = NULL, usePadj = TRUE, useTerm = TRUE,
-  writeCyt = FALSE, cytoscapeFile = "network-file-for-cytoscape.txt",
+  low = "orange", high = "red", writeCyt = FALSE,
+  cytoscapeFile = "network-file-for-cytoscape.txt",
   label.color = "black", label.size = 2, node.shape = NULL,
   layout = layout.fruchterman.reingold, savefig = FALSE,
   filename = "network", width = 7, height = 7, node.alpha = 0.7,
@@ -22,6 +23,10 @@ richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
 \item{padj.cutoff}{cutoff p adjust value for enrichment result}
 
 \item{useTerm}{use terms for nodes (default: TRUE)}
+
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
 
 \item{writeCyt}{write out the cytoscape file}
 

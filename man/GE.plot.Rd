@@ -5,15 +5,19 @@
 \title{Display GO enrichment result}
 \usage{
 GE.plot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  horiz = FALSE, font.x = "bold", font.y = "bold", fontsize.x = 10,
-  fontsize.y = 10, fontsize.text = 3, angle = 75,
-  padj.cutoff = NULL, usePadj = TRUE, filename = NULL, width = 10,
-  height = 8)
+  horiz = FALSE, low = "lightpink", high = "red", font.x = "bold",
+  font.y = "bold", fontsize.x = 10, fontsize.y = 10,
+  fontsize.text = 3, angle = 75, padj.cutoff = NULL,
+  usePadj = TRUE, filename = NULL, width = 10, height = 8)
 }
 \arguments{
 \item{order}{order bar or not}
 
 \item{horiz}{use horiz or not}
+
+\item{low}{color used for small value}
+
+\item{high}{color used for large value}
 
 \item{fontsize.x}{fontsize for x axis}
 
