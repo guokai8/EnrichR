@@ -1,4 +1,6 @@
 #' Enrichment analysis for any type of annotation data
+#' @importFrom dplyr filter_
+#' @importFrom magrittr %>%
 #' @param df DGE files (DESeq2 result files) or vector contains gene names
 #' @param annot annotation file for all genes
 #' @param annot.info Term of all annotation
@@ -42,11 +44,11 @@ enrich<-function(df,annot,annot.info=NULL,minSize=1,maxSize=500,keepRich=TRUE,fi
   }
   resultFis<-resultFis[order(resultFis$Pvalue),]
   colnames(resultFis)[2]="Term"
-  resultFis<-resultFis%>%dplyr::filter(Significant<=maxSize)
+  resultFis<-resultFis%>%filter_(~Significant<=maxSize)
   if(keepRich==FALSE){
-    resultFis<-resultFis%>%dplyr::filter(Significant>=minSize)
+    resultFis<-resultFis%>%filter_(~Significant>=minSize)
   }else{
-    resultFis<-resultFis%>%dplyr::filter(Significant>=minSize|(Annotated/Significant)==1)
+    resultFis<-resultFis%>%filter_(~Significant>=minSize|(~Annotated/~Significant)==1)
   }
   if(!is.null(filename)){
     write.table(resultFis,file=paste(filename,".txt",sep=""),sep="\t",quote=F,row.names=F)

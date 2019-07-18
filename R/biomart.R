@@ -12,12 +12,13 @@ showplant<-function(host="plants.ensembl.org"){
   res
 }
 #' Show avaliable annotation except plant based on ENSEMBLE
+#' @importFrom biomaRt useMart
+#' @importFrom biomaRt listDatasets
 #' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
 #' @param species the sepcies you want to search
 #' @export
 #' @author Kai Guo
 showensemble<-function(host="uswest.ensembl.org"){
-  suppressMessages(require(biomaRt))
   cat("You could choose different host to get high speed!\n")
   cat("Ensembl US West: uswest.ensembl.org\nEnsembl US East: useast.ensembl.org\nEnsembl Asia: asia.ensembl.org\n" )
   mart=useMart("ENSEMBL_MART_ENSEMBL",host=host)
@@ -26,13 +27,15 @@ showensemble<-function(host="uswest.ensembl.org"){
   res
 }
 #' make plant annotation data based on ENSEMBLE
+#' @importFrom biomaRt useMart
+#' @importFrom biomaRt useDataset
+#' @importFrom biomaRt getBM
 #' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
 #' @param species the sepcies you want to search, you can use showplant to get the species name
 #' @param ann_type the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
 #' @export
 #' @author Kai Guo
 makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_type="GO"){
-  suppressMessages(require(biomaRt))
   mart=useMart("plants_mart",host=host)
   dbinfo<-.getmartdb(species,mart)
   dbname=as.character(dbinfo$dbname)
@@ -56,13 +59,15 @@ makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_typ
   return(res)
 }
 #' make annotation data except plant based on ENSEMBLE
+#' @importFrom biomaRt useMart
+#' @importFrom biomaRt useDataset
+#' @importFrom biomaRt getBM
 #' @param host the ensemble API host,for plant you can use plants.ensembl.org and for human and other species you can use uswest.ensembl.org
 #' @param species the species you want to search, you can use showplant to get the species name
 #' @param ann_type the type of function annotation(GO,KEGG,PFAM,InterPro) you want get from ensemble
 #' @export
 #' @author Kai Guo
 makeesanno<-function(species="Human",host="uswest.ensembl.org",ann_type="GO"){
-  suppressMessages(require(biomaRt))
   mart=useMart("ENSEMBL_MART_ENSEMBL",host=host)
   dbinfo<-.getmartdb(species,mart)
   dbname=as.character(dbinfo$dbname)
@@ -83,16 +88,23 @@ makeesanno<-function(species="Human",host="uswest.ensembl.org",ann_type="GO"){
   rownames(res)<-NULL
   return(res)
 }
+##' @importFrom dplyr select_
+##' @importFrom dplyr collect
+##' @importFrom dplyr pull
+##' @importFrom magrittr %>%
+##' @importFrom biomaRt listDatasets
+##' @importFrom jsonlite fromJSON
 .getmartdb<-function(spe,mart){
-  suppressMessages(library(dplyr))
   lhs<- listDatasets(mart)
   spe=simpleCap(spe);
-  spe=gsub(' ','\\\\s',spe)
-  dataset<-lhs%>%dplyr::filter(grepl(spe,description,ignore.case = T))%>%dplyr::select(dataset)%>%collect%>%.[[1]]
+  spe<-gsub(' ','\\\\s',spe)
+  sel<-grepl(spe,lhs$description,ignore.case = T)
+  tmp<-lhs[sel,]
+  dataset<-tmp%>%select_(~dataset)%>%collect%>%pull(1)
   if((length(dataset)==0)|(length(dataset)>1)){
     stop("Maybe you need first check the avaliable database by using showensemble() or showplant()\n")
   }
-  chr<-lhs%>%dplyr::filter(grepl(spe,description,ignore.case = T))%>%dplyr::select(description)%>%collect%>%.[[1]]
+  chr<-tmp%>%select_(~description)%>%collect%>%pull(1)
   organism<-gsub(' ','_',sub(' genes.*','',chr))
   if(organism=="Oryza_sativa_Japonica"){
     organism="Oryza_sativa"
@@ -104,7 +116,7 @@ makeesanno<-function(species="Human",host="uswest.ensembl.org",ann_type="GO"){
   }
   tryCatch({
     chr_d <-
-      jsonlite::fromJSON(
+      fromJSON(
         paste0(
           pre_site,
           organism,

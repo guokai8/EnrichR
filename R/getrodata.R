@@ -1,9 +1,9 @@
 #' make Reactome annotation data function
-#' @param species: you can check the supported species by using showAvailableRO and showAvailablePlants
+#' @importFrom AnnotationDbi as.list
+#' @param species you can check the supported species by using showAvailableRO and showAvailablePlants
 #' @export
 #' @author Kai Guo
 makeROdata<-function(species="Homo_sapiens"){
-   suppressMessages(require(AnnotationDbi))
    dbname<-.getrodbname(species=species);
    if (!require("reactome.db",character.only=TRUE)){
      source("http://bioconductor.org/biocLite.R")
@@ -12,9 +12,9 @@ makeROdata<-function(species="Homo_sapiens"){
      suppressMessages(require("reactome.db",character.only = T,quietly = T))
    }
    dbname=sapply(strsplit(dbname,"_"),'[[',1)
-   lhs<-AnnotationDbi::as.list(reactomePATHNAME2ID)
+   lhs<-as.list(reactomePATHNAME2ID)
    lhs<-lhs[grep(dbname,names(lhs))]
-   roid<-AnnotationDbi::as.list(reactomePATHID2EXTID)[unique(as.vector(unlist(lhs)))]
+   roid<-as.list(reactomePATHID2EXTID)[unique(as.vector(unlist(lhs)))]
    roid<-lapply(roid, function(x)unique(x))
    roid<-data.frame("GeneID"=unlist(roid),"RO"=rep(names(roid),times=lapply(roid, length)),row.names=NULL)
    ll<-lapply(lhs,function(x)unique(x))
@@ -25,14 +25,16 @@ makeROdata<-function(species="Homo_sapiens"){
    return(res)
 }
 #' make Plant Reactome annotation data function
+#' @importFrom dplyr filter_
+#' @importFrom dplyr select_
 #' @param species: you can check the supported species by using showAvailableRO and showAvailablePlants
 #' @export
 #' @author Kai Guo
 makeplantROdat<-function(species="Arabidopsis_thaliana"){
-  suppressMessages(library(dplyr));
   data(rodata)
   dbname<-.getplantrodbname(species=species);
-  RO_FILE=rodata%>%dplyr::filter(species==dbname)%>%dplyr::select(GeneID,RO,Description,species)
+  RO_FILE<-filter_(rodata,~species==dbname)
+  RO_FILE<-select_(RO_FILE,~GeneID,~RO,~Description,~species)
   return(as.data.frame(RO_FILE));
 }
 simpleCap <- function(x) {

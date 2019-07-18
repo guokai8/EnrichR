@@ -1,4 +1,6 @@
 #' make GO annotation data function
+#' @importFrom AnnotationDbi keys
+#' @importFrom AnnotationDbi select
 #' @param species you can check the support species by using showData()
 #' @param keytype the gene ID type
 #' @importFrom dplyr distinct_
@@ -6,8 +8,6 @@
 #' @author Kai Guo
 makeGOdat<-function(species="human",keytype="ENTREZID"){
   dbname<-.getdbname(species);
-  suppressMessages(require(AnnotationDbi))
-  sel<-AnnotationDbi::select
   if (!require(dbname,character.only=TRUE)){
     source("http://bioconductor.org/biocLite.R")
     biocLite(dbname)
@@ -15,13 +15,16 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
     suppressMessages(require(dbname,character.only = T,quietly = T))
   }
   dbname<-eval(parse(text=dbname))
-  GO_FILE<-sel(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
+  GO_FILE<-select(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
   GO_FILE<-distinct_(GO_FILE,~SYMBOL, ~GOALL, ~ONTOLOGYALL)
   annot <- getann("GO")
   GO_FILE$Annot <- annot[GO_FILE[,2],"annotation"]
   return(GO_FILE)
 }
 #' make KEGG annotation data function
+#' @importFrom AnnotationDbi keys
+#' @importFrom AnnotationDbi select
+#' @importFrom KEGGREST keggLink
 #' @param species you can check the support species by using showData()
 #' @param keytype the gene ID type
 #' @export
@@ -29,8 +32,8 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
 makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
   dbname<-.getdbname(species=species);
   if(builtin==TRUE){
-  suppressMessages(require(AnnotationDbi))
-  sel<-AnnotationDbi::select
+ # suppressMessages(require(AnnotationDbi))
+#  sel<-AnnotationDbi::select
   if (!require(dbname,character.only=TRUE)){
     source("http://bioconductor.org/biocLite.R")
     biocLite(dbname)
@@ -38,10 +41,9 @@ makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
     suppressMessages(require(dbname,character.only = T,quietly = T))
   }
   dbname<-eval(parse(text=dbname))
-  KO_FILE=sel(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns="PATH")
+  KO_FILE=select(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns="PATH")
   KO_FILE<-na.omit(KO_FILE)
   }else{
-    suppressMessages(require(KEGGREST))
     spe=.getspeices(species)
     tmp<-keggLink("pathway",spe)
     tmp<-substr(tmp,9,13)

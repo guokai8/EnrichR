@@ -1,4 +1,5 @@
 #' KEGG Pathway Enrichment analysis function
+#' @importFrom dplyr filter_
 #' @param df DGE files (DESeq2 result files) or vector contains gene names
 #' @param KO_FILE KEGG annotation data
 #' @param minSize minimal number of genes included in significant terms
@@ -29,7 +30,6 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
   rhs<-hyper_bench_vector(k,M,N,n)
   lhs<-p.adjust(rhs,method=padj.method)
   all_ko<-.get_kg_dat(builtin=builtin)
- # rhs_an<-all_ko[rownames(all_ko)%in%names(rhs),]
   rhs_an<-all_ko[names(rhs),]
   rhs_gene<-unlist(lapply(fko2gene, function(x)paste(unique(x),sep="",collapse = ",")))
   resultFis<-data.frame("Annot"=names(rhs),"Term"=rhs_an,"Annotated"=M[names(rhs)],
@@ -38,11 +38,14 @@ KE<-function(df,KO_FILE,filename=NULL,gene.cutoff=0.01,minSize=2,maxSize=500,kee
 
   resultFis<-resultFis[order(resultFis$Pvalue),]
   resultFis<-resultFis[resultFis$Pvalue<cutoff,]
-  resultFis<-resultFis%>%dplyr::filter(Significant<=maxSize)
+  resultFis<-filter_(resultFis, ~Significant<=maxSize)
+  resultFis<-resultFis[order(resultFis$Pvalue),]
+  resultFis<-resultFis[resultFis$Pvalue<cutoff,]
+  resultFis<-filter_(resultFis, ~Significant<=maxSize)
   if(keepRich==FALSE){
-    resultFis<-resultFis%>%dplyr::filter(Significant>=minSize)
+    resultFis<-filter_(resultFis, ~Significant>=minSize)
   }else{
-    resultFis<-resultFis%>%dplyr::filter(Significant>=minSize|(Annotated/Significant)==1)
+    resultFis<-filter_(resultFis, ~Significant>=minSize|(~Annotated/~Significant)==1)
   }
   if(!is.null(filename)){
     write.table(resultFis,file=paste(filename,".txt",sep=""),sep="\t",quote=F,row.names=F)

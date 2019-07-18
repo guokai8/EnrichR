@@ -38,6 +38,11 @@ mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
    }
 }
 #' Plot compare heatmap of Enrichment result among DEG groups
+#' @importFrom dplyr select_
+#' @importFrom reshape2 melt
+#' @importFrom magrittr %>%
+#' @importFrom dplyr pull
+#' @importFrom plyr .
 #' @param rhslist of enrchment analysis result among DEG groups
 #' @param top the number of Terms you want to display
 #' @param colnames the compare DEG group names
@@ -48,19 +53,17 @@ mnetmap<-function(df,gores=NULL,kores=NULL,rores=NULL,pfres=NULL,
 lheatmap<-function (rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,padj=NULL,horizontal=FALSE,pval=0.05,returnData=FALSE,...)
 {
   options(stringsAsFactors = F)
-  suppressMessages(library(dplyr))
-  suppressMessages(library(reshape2))
   suppressMessages(library(ggplot2))
   if(!is.null(padj)){
     rhs <- lapply(rhs, function(x) x[, c("Term", "Padj")])
     rhs<-lapply(rhs,function(x)x[x$Padj<padj,])
     sel<-unique(unlist(lapply(rhs,function(x)x%>%arrange(Padj)%>%
-                                dplyr::select(Term)%>%.[[1]]%>%.[1:top])))
+                                select_(~Term)%>%pull(1)%>%.[1:top])))
   }else{
     rhs <- lapply(rhs, function(x) x[, c("Term", "Pvalue")])
     rhs<-lapply(rhs,function(x)x[x$Pval<pval,])
     sel<-unique(unlist(lapply(rhs,function(x)x%>%arrange(Pvalue)%>%
-                                dplyr::select(Term)%>%.[[1]]%>%.[1:top])))
+                                select_(~Term)%>%pull(1)%>%.[1:top])))
   }
   res <- Reduce(function(x, y) full_join(x, y, by = "Term"),rhs)
   if (!is.null(colnames)) {
@@ -71,7 +74,7 @@ lheatmap<-function (rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,padj=NU
                                                       1), sep = "_")
   }
   res[is.na(res)] <- 1
-  res<-res%>%dplyr::filter(Term%in%sel)
+  res<-res%>%filter_(~Term%in%sel)
   res<-as.data.frame(res)
   rownames(res)<-res$Term
   cor_mat<-cor(t(res[,2:ncol(res)]))
