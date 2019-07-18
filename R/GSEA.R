@@ -17,7 +17,7 @@ gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filenam
     annot.info$annot<-paste(rownames(annot.info),annot.info[,1],sep="_")
     annot[,2]<-annot.info[annot[,2],"Annot"]
   }else{
-    if(!is.null(annot$Annot)){
+    if("Annot"%in%colnames(annot)){
       annot[,2]<-annot$Annot
     }
   }
@@ -26,7 +26,7 @@ gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filenam
   if(isTRUE(table)){
     res$leadingEdge<-unlist(lapply(res$leadingEdge, function(x)paste(x,collapse = ",",sep="")))
   }
-  res<-res[order(res$padj),]                                 
+  res<-res[order(res$padj),]
   if(!is.null(filename)){
     tmp<-res
     tmp$leadingEdge<-unlist(lapply(tmp$leadingEdge, function(x)paste(x,collapse = ",",sep="")))

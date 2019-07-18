@@ -3,10 +3,11 @@
 #' @importFrom AnnotationDbi select
 #' @param species you can check the support species by using showData()
 #' @param keytype the gene ID type
+#' @param OP BP,CC,MF default use all
 #' @importFrom dplyr distinct_
 #' @export
 #' @author Kai Guo
-makeGOdat<-function(species="human",keytype="ENTREZID"){
+makeGOdat<-function(species="human",keytype="ENTREZID",OP=NULL){
   dbname<-.getdbname(species);
   if (!require(dbname,character.only=TRUE)){
     source("http://bioconductor.org/biocLite.R")
@@ -19,6 +20,9 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
   GO_FILE<-distinct_(GO_FILE,~SYMBOL, ~GOALL, ~ONTOLOGYALL)
   annot <- getann("GO")
   GO_FILE$Annot <- annot[GO_FILE[,2],"annotation"]
+  if(!is.null(OP)){
+    GO_FILE<-GO_FILE[GO_FILE$ONTOLOGYALL==OP,]
+  }
   return(GO_FILE)
 }
 #' make KEGG annotation data function
