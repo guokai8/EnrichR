@@ -26,6 +26,7 @@ gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filenam
   if(isTRUE(table)){
     res$leadingEdge<-unlist(lapply(res$leadingEdge, function(x)paste(x,collapse = ",",sep="")))
   }
+  res<-res[order(res$padj),]                                 
   if(!is.null(filename)){
     tmp<-res
     tmp$leadingEdge<-unlist(lapply(tmp$leadingEdge, function(x)paste(x,collapse = ",",sep="")))
