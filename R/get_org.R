@@ -1,6 +1,7 @@
 #' make GO annotation data function
 #' @param species you can check the support species by using showData()
 #' @param keytype the gene ID type
+#' @importFrom dplyr distinct_
 #' @export
 #' @author Kai Guo
 makeGOdat<-function(species="human",keytype="ENTREZID"){
@@ -14,7 +15,10 @@ makeGOdat<-function(species="human",keytype="ENTREZID"){
     suppressMessages(require(dbname,character.only = T,quietly = T))
   }
   dbname<-eval(parse(text=dbname))
-  GO_FILE=sel(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
+  GO_FILE<-sel(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
+  GO_FILE<-distinct_(GO_FILE,~SYMBOL, ~GOALL, ~ONTOLOGYALL)
+  annot <- getann("GO")
+  GO_FILE$Annot <- annot[GO_FILE[,2],"annotation"]
   return(GO_FILE)
 }
 #' make KEGG annotation data function
@@ -49,6 +53,8 @@ makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
     }
     KO_FILE=tmp
   }
+  annot<-getann("KEGG")
+  KO_FILE$Annot<-annot[KO_FILE[,2],"annotation"]
   return(KO_FILE)
 }
 #' Convert ID between ENTREZID to SYMBOL or other type ID based on bioconductor annotation package

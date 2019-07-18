@@ -31,10 +31,10 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
   M<-name_table(go2gene[IGO])
   rhs<-hyper_bench_vector(k,M,N,n)
   lhs<-p.adjust(rhs,method=padj.method)
-  rhs_an<-all_go[all_go$GOID%in%names(rhs),1:2]
-  rownames(rhs_an)<-rhs_an[,1]
+  rhs_an<-all_go[names(rhs),]
+  #rownames(rhs_an)<-rhs_an[,1]
   rhs_gene<-unlist(lapply(fgo2gene, function(x)paste(unique(x),sep="",collapse = ",")))
-  resultFis<-data.frame("Annot"=rhs_an$GOID,"Term"=rhs_an[names(rhs),"TERM"],"Annotated"=M[rhs_an$GOID],
+  resultFis<-data.frame("Annot"=names(rhs),"Term"=rhs_an,"Annotated"=M[rhs_an$GOID],
                         "Significant"=k[rhs_an$GOID],"Pvalue"=as.vector(rhs),"Padj"=lhs,
                         "GeneID"=rhs_gene[as.vector(rhs_an$GOID)])
   resultFis<-resultFis[order(resultFis$Pvalue),]

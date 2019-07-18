@@ -6,6 +6,9 @@
   if(ont=="BP") res<-as.data.frame(dplyr::filter(go_dat,ONTOLOGY=="BP"))
   if(ont=="CC") res<-as.data.frame(dplyr::filter(go_dat,ONTOLOGY=="CC"))
   if(ont=="MF") res<-as.data.frame(dplyr::filter(go_dat,ONTOLOGY=="MF"))
+  rownames(res)<-res[,1]
+  res<-res[, 2, drop = FALSE]
+  colnames(res)<-"annotation"
   return(res)
 }
 .get_kg_dat<-function(builtin=TRUE){
@@ -20,4 +23,19 @@
      pathway<-as.data.frame(pathway)
      return(pathway)
      }
+}
+##' build annotaion for kegg
+##' @param ontype GO or KEGG
+##' @examples
+##' annot = getann("GO")
+##' @export
+##' @author Kai Guo
+getann<-function(ontype="GO"){
+    if(ontype=="GO"){
+        res<-rbind(.get_go_dat("BP"),.get_go_dat("MF"),.get_go_dat("CC"))
+    }
+    if(ontype=="KEGG"){
+        res<-.get_kg_dat(builtin=F)
+    }
+    return(res)
 }
