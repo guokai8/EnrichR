@@ -5,7 +5,7 @@
 \title{Enrichment analysis for any type of annotation data}
 \usage{
 gsea(x, annot, annot.info = NULL, minSize = 15, maxSize = 500,
-  nperm = 5000, filename = NULL, padj.method = "BH", table = FALSE)
+  nperm = 5000, filename = NULL, padj.method = "BH", table = TRUE)
 }
 \arguments{
 \item{x}{a vector include all log2FC with gene name}

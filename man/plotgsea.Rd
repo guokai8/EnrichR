@@ -4,7 +4,7 @@
 \alias{plotgsea}
 \title{plot the gsea result}
 \usage{
-plotgsea(x, term, annot, annot.info = NULL, gseaRes = NULL)
+plotgsea(x, term, annot, gseaRes = NULL, annot.info = NULL)
 }
 \arguments{
 \item{x}{a vector include all log2FC with gene name}

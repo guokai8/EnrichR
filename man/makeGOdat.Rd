@@ -4,12 +4,14 @@
 \alias{makeGOdat}
 \title{make GO annotation data function}
 \usage{
-makeGOdat(species = "human", keytype = "ENTREZID")
+makeGOdat(species = "human", keytype = "ENTREZID", OP = NULL)
 }
 \arguments{
 \item{species}{you can check the support species by using showData()}
 
 \item{keytype}{the gene ID type}
+
+\item{OP}{BP,CC,MF default use all}
 }
 \description{
 make GO annotation data function
