@@ -10,7 +10,7 @@
 #' @importFrom fgsea fgsea
 #' @export
 #' @author Kai Guo
-gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filename=NULL,padj.method="BH",table = FALSE){
+gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filename=NULL,padj.method="BH",table = TRUE){
   x<-sort(x)
   if(!is.null(annot.info)){
     rownames(annot.info)<-annot.info[,1]
