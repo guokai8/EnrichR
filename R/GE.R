@@ -34,8 +34,8 @@ GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=
   rhs_an<-all_go[names(rhs),]
   #rownames(rhs_an)<-rhs_an[,1]
   rhs_gene<-unlist(lapply(fgo2gene, function(x)paste(unique(x),sep="",collapse = ",")))
-  resultFis<-data.frame("Annot"=names(rhs),"Term"=rhs_an,"Annotated"=M[rhs_an$GOID],
-                        "Significant"=k[rhs_an$GOID],"Pvalue"=as.vector(rhs),"Padj"=lhs,
+  resultFis<-data.frame("Annot"=names(rhs),"Term"=rhs_an,"Annotated"=M[names(rhs)],
+                        "Significant"=k[names(rhs)],"Pvalue"=as.vector(rhs),"Padj"=lhs,
                         "GeneID"=rhs_gene[as.vector(rhs_an$GOID)])
   resultFis<-resultFis[order(resultFis$Pvalue),]
   resultFis<-resultFis[resultFis$Pvalue<cutoff,]
