@@ -9,17 +9,19 @@ enrich(df, annot, annot.info = NULL, minSize = 1, maxSize = 500,
   padj.method = "BH")
 }
 \arguments{
-\item{df:}{DGE files (DESeq2 result files) or vector contains gene names}
+\item{df}{DGE files (DESeq2 result files) or vector contains gene names}
 
-\item{annot:}{annotation file for all genes}
+\item{annot}{annotation file for all genes}
 
-\item{annot.info:}{Term of all annotation}
+\item{annot.info}{Term of all annotation}
 
-\item{filenam:}{output filename}
+\item{keepRich}{keep terms with high rich factor}
 
-\item{gene.cutoff:}{DGE singificant cutoff value}
+\item{filename}{output filename}
 
-\item{padj.method:}{p value adjust method}
+\item{gene.cutoff}{DGE singificant cutoff value}
+
+\item{padj.method}{p value adjust method}
 }
 \description{
 Enrichment analysis for any type of annotation data

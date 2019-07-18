@@ -11,6 +11,14 @@ enrichbar(resultFis, top = 50, pvalue.cutoff = 0.05,
   width = 10, height = 8)
 }
 \arguments{
+\item{resultFis}{Ennrichment analysis result data.frame}
+
+\item{top}{Number of Terms you want to display}
+
+\item{pvalue.cutoff}{the cut-off value for selecting Term}
+
+\item{padj.cutoff}{the padj cut-off value for selecting Term}
+
 \item{low}{color used for small value}
 
 \item{high}{color used for large value}
@@ -26,14 +34,6 @@ enrichbar(resultFis, top = 50, pvalue.cutoff = 0.05,
 \item{width}{width for output file}
 
 \item{height}{height for output file}
-
-\item{resultFis:}{Ennrichment analysis result data.frame}
-
-\item{top:}{Number of Terms you want to display}
-
-\item{pvalue.cutoff:}{the cut-off value for selecting Term}
-
-\item{padj.cutoff:}{the padj cut-off value for selecting Term}
 }
 \description{
 Display enrichment result By using barchart

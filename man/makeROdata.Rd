@@ -7,7 +7,7 @@
 makeROdata(species = "Homo_sapiens")
 }
 \arguments{
-\item{species:}{you can check the supported species by using showAvailableRO and showAvailablePlants}
+\item{species}{you can check the supported species by using showAvailableRO and showAvailablePlants}
 }
 \description{
 make Reactome annotation data function
