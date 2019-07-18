@@ -13,9 +13,10 @@
 #' @author Kai Guo
 GE<-function(df,GO_FILE,OP="BP",gene.cutoff=0.01,minSize=2,maxSize=500,keepRich=TRUE,filename=NULL,padj.method="BH",cutoff=0.05){
   suppressMessages(require(tidyr))
+  suppressMessages(require(dplyr))
   go2gene<-sf(GO_FILE)
   all_go<-.get_go_dat(ont=OP)
-  go2gene<-go2gene[names(go2gene)%in%all_go$GOID];
+  go2gene<-go2gene[names(go2gene)%in%rownames(all_go)];
   gene2go<-reverseList(go2gene)
   if(is.data.frame(df)){
     IGE<-rownames(df)[df$padj<gene.cutoff]
