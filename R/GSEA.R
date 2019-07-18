@@ -44,7 +44,7 @@ gsea<-function(x,annot,annot.info=NULL,minSize=15,maxSize=500,nperm=5000,filenam
 #' @importFrom fgsea plotEnrichment plotGseaTable
 #' @export
 #' @author Kai Guo
-plotgsea<-function(x,term,annot,annot.info=NULL,gseaRes=NULL){
+plotgsea<-function(x,term,annot,gseaRes=NULL,annot.info=NULL){
   x<-sort(x)
   if(!is.null(annot.info)){
     rownames(annot.info)<-annot.info[,1]
