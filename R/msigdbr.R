@@ -89,7 +89,7 @@ makeMSIGDB<-function(species="human",keytype="SYMBOL",subcategory=NULL,
 
 ##' msigdb support species
 ##' @param species with common name
-.getmsig<-function(species="humam"){
+.getmsig<-function(species="human"){
   out<-NULL
   if(species=="human"){
     out<-"Homo sapiens"
