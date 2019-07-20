@@ -8,8 +8,7 @@ R>2.15
 ## Installation
 ```   
 library(devtools)    
-install_github("guokai8/EnrichR",build_vignettes = TRUE)
-### Suggest use RStudio to run the command if you want to use build_vignettes
+install_github("guokai8/EnrichR")
 ```
 ## Getting started
 ```
