@@ -39,5 +39,4 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
-biocViews: Annotation, Clustering, GeneSetEnrichment, GO, KEGG,
-    MultipleComparison, Pathways, Reactome, Visualization
+biocViews: Annotation, Clustering, GeneSetEnrichment, Visualization
