@@ -5,6 +5,7 @@
 ##' @importFrom GGally ggnet2
 ##' @importFrom ggrepel geom_text_repel
 ##' @importFrom reshape2 melt
+##' @importFrom igraph write_graph
 ##' @param df Differential expression result or vector of genes
 ##' @param rhs Enrichment results
 ##' @param top number of terms to show (default: 50)
@@ -99,10 +100,6 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,low 
   wn <- wn[wn[, 1] != wn[, 2], ]
   wn <- wn[!is.na(wn[, 3]), ]
   wn <- wn[wn[, 3] > 0, ]
-  if (writeCyt == TRUE) {
-    write.table(wn, file = cytoscapeFile, sep = "\t",
-                row.names = F, quote = F)
-  }
   g <- igraph::graph.data.frame(wn[, -3], directed = F)
   E(g)$width = sqrt(wn[, 3] * 5)
   pvalue = pvalue[V(g)$name]
@@ -139,6 +136,9 @@ gnet<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,low 
     geom_text_repel(label = V(g)$name,
                   size=vertex.label.cex,segment.size=segment.size,color=vertex.label.color)+
     theme(legend.position = "none")
+  if (writeCyt == TRUE) {
+    write_graph(g, file = cytoscapeFile, format="graphml")
+  }
   print(p)
     if(savefig==TRUE){
     ggsave(p,file=paste(filename,"pdf",sep="."),width=width,height = height)
