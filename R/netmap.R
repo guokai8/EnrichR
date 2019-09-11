@@ -88,10 +88,6 @@ netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,lo
   wn <- wn[wn[, 1] != wn[, 2], ]
   wn <- wn[!is.na(wn[, 3]), ]
   wn <- wn[wn[, 3] > 0, ]
-  if (writeCyt == TRUE) {
-    write.table(wn, file = cytoscapeFile, sep = "\t",
-                row.names = F, quote = F)
-  }
   g <- igraph::graph.data.frame(wn[, -3], directed = F)
   E(g)$width = sqrt(wn[, 3] * 5)
   pvalue = pvalue[V(g)$name]
@@ -114,6 +110,9 @@ netmap<-function (df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,lo
     names(gs) <- rownames(rhs)
   }
   V(g)$size <- log(gs[V(g)$name], base = 10) * 10
+  if (writeCyt == TRUE) {
+    write_graph(g, file = cytoscapeFile, format="graphml")
+  }
   if (visNet == TRUE) {
     suppressMessages(library(visNetwork))
     graph <- visIgraph(g, smooth = smooth)
