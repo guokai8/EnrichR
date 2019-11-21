@@ -4,7 +4,7 @@
 \alias{.getmsig}
 \title{msigdb support species}
 \usage{
-.getmsig(species = "humam")
+.getmsig(species = "human")
 }
 \arguments{
 \item{species}{with common name}
