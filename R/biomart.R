@@ -51,8 +51,8 @@ makeplantann<-function(species="Arabidopsis t",host="plants.ensembl.org",ann_typ
    res<-getBM(attributes = c("ensembl_gene_id","pfam"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else if(ann_type=="InterPro"){
     res<-getBM(attributes = c("ensembl_gene_id","interpro"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
-  }else if(ann_type=="InterPro"){
-    res<-getBM(attributes = c("ensembl_gene_id","gramene_plant_reactome"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
+  }else if(ann_type=="Reactome"){
+    res<-getBM(attributes = c("ensembl_gene_id","plant_reactome_pathway"),filters ="chromosome_name",values = as.vector(dbinfo$chr_info$name),dataset)
   }else{
     stop("You must specify one type of annotation!\n")
   }
