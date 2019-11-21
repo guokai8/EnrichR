@@ -30,7 +30,7 @@ makeROdata<-function(species="Homo_sapiens"){
 #' @param species: you can check the supported species by using showAvailableRO and showAvailablePlants
 #' @export
 #' @author Kai Guo
-makeplantROdat<-function(species="Arabidopsis_thaliana"){
+makeplantROdata<-function(species="Arabidopsis_thaliana"){
   data(rodata)
   dbname<-.getplantrodbname(species=species);
   RO_FILE<-filter_(rodata,~species==dbname)

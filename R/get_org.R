@@ -7,11 +7,14 @@
 #' @importFrom dplyr distinct_
 #' @export
 #' @author Kai Guo
-makeGOdat<-function(species="human",keytype="ENTREZID",OP=NULL){
+makeGOdata<-function(species="human",keytype="ENTREZID",OP=NULL){
   dbname<-.getdbname(species);
   if (!require(dbname,character.only=TRUE)){
-    source("http://bioconductor.org/biocLite.R")
-    biocLite(dbname)
+    if(!require("BiocManager",character.only=TRUE)){
+      install.packages("BiocManager")
+    }else{
+      BiocManager::install(dbname)
+    }
   }else{
     suppressMessages(require(dbname,character.only = T,quietly = T))
   }
@@ -33,14 +36,17 @@ makeGOdat<-function(species="human",keytype="ENTREZID",OP=NULL){
 #' @param keytype the gene ID type
 #' @export
 #' @author Kai Guo
-makeKOdat<-function(species="human",keytype="ENTREZID",builtin=TRUE){
+makeKOdata<-function(species="human",keytype="ENTREZID",builtin=TRUE){
   dbname<-.getdbname(species=species);
   if(builtin==TRUE){
  # suppressMessages(require(AnnotationDbi))
 #  sel<-AnnotationDbi::select
-  if (!require(dbname,character.only=TRUE)){
-    source("http://bioconductor.org/biocLite.R")
-    biocLite(dbname)
+    if (!require(dbname,character.only=TRUE)){
+      if(!require("BiocManager",character.only=TRUE)){
+        install.packages("BiocManager")
+      }else{
+        BiocManager::install(dbname)
+      }
   }else{
     suppressMessages(require(dbname,character.only = T,quietly = T))
   }
