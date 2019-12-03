@@ -20,7 +20,8 @@ makeGOdata<-function(species="human",keytype="ENTREZID",OP=NULL){
   }
   dbname<-eval(parse(text=dbname))
   GO_FILE<-select(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
-  GO_FILE<-distinct_(GO_FILE,~SYMBOL, ~GOALL, ~ONTOLOGYALL)
+  colnames(GO_FILE)[1]="GeneID"
+  GO_FILE<-distinct_(GO_FILE,~GeneID, ~GOALL, ~ONTOLOGYALL)
   annot <- getann("GO")
   GO_FILE$Annot <- annot[GO_FILE[,2],"annotation"]
   if(!is.null(OP)){
