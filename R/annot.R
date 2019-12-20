@@ -22,6 +22,7 @@
      rownames(pathway)<-sub('path:map','',rownames(pathway))
      colnames(pathway)<-"annotation"
      pathway<-as.data.frame(pathway)
+     pathway$annotation<-as.vector(pathway$annotation)
      return(pathway)
      }
 }

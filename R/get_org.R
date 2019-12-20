@@ -20,7 +20,7 @@ makeGOdata<-function(species="human",keytype="ENTREZID",OP=NULL){
   }
   dbname<-eval(parse(text=dbname))
   GO_FILE<-select(dbname,keys=keys(dbname,keytype=keytype),keytype=keytype,columns=c("GOALL","ONTOLOGYALL"))
-  colnames(GO_FILE)[1]="GeneID"
+  colnames(GO_FILE)[1]<-"GeneID"
   GO_FILE<-distinct_(GO_FILE,~GeneID, ~GOALL, ~ONTOLOGYALL)
   annot <- getann("GO")
   GO_FILE$Annot <- annot[GO_FILE[,2],"annotation"]
@@ -67,6 +67,8 @@ makeKOdata<-function(species="human",keytype="ENTREZID",builtin=TRUE){
     KO_FILE=tmp
   }
   annot<-getann("KEGG")
+  KO_FILE[,1]<-as.vector(KO_FILE[,1])
+  KO_FILE[,2]<-as.vector(KO_FILE[,2])
   KO_FILE$Annot<-annot[KO_FILE[,2],"annotation"]
   return(KO_FILE)
 }
