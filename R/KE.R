@@ -96,7 +96,7 @@ KE.plot<-function(resultFis,pvalue.cutoff=0.05,top=50,order=FALSE,
     p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)),alpha=alpha)+theme_minimal()+
       theme(axis.text.y=element_text(face=font.y,size=fontsize.y),axis.text.x=element_text(face=font.x,color="black",size=fontsize.x))+
     scale_colour_gradient(low=low,high=high)+ylab("Pathway name")+
-    xlab("Rich factor")+labs(size="Gene number")
+    xlab("Rich factor")+labs(size="Gene number")+guides(color=guide_colourbar(order = 1),size=guide_legend(order = 2))
     print(p)
   }else{
     p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)),alpha=alpha)+theme_minimal()+
