@@ -161,13 +161,13 @@ enrichdot<-function(resultFis,top=50,pvalue.cutoff=0.05,order=FALSE,
       p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Pvalue)),alpha=alpha)+
         theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
         scale_colour_gradient(low=low,high=high)+theme_minimal()+ylab("Pathway name")+
-        xlab("Rich factor")+labs(size="Gene number")
+        xlab("Rich factor")+labs(size="Gene number")+guides(color=guide_colourbar(order = 1),size=guide_legend(order = 2))
       print(p)
     }else{
       p<-ggplot(dd,aes(x=rich,y=Term))+geom_point(aes(size=Significant,color=-log10(Padj)),alpha=alpha)+
         theme(axis.text.y=element_text(face="bold",size=fontsize.y),axis.text.x=element_text(face="bold",color="black",size=fontsize.x))+
         scale_colour_gradient(low=low,high=high)+theme_minimal()+ylab("Pathway name")+
-        xlab("Rich factor")+labs(size="Gene number")
+        xlab("Rich factor")+labs(size="Gene number")+guides(color=guide_colourbar(order = 1),size=guide_legend(order = 2))
       print(p)
     }
       if(!is.null(filename)){
