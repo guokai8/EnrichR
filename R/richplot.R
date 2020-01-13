@@ -60,7 +60,7 @@ richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL,
         rhs$value <- -log10(resultFis[rhs$to,"Pvalue"])
     }
     if (writeCyt == TRUE) {
-      write.table(wn, file = cytoscapeFile, sep = "\t",
+      write.table(rhs, file = cytoscapeFile, sep = "\t",
                   row.names = F, quote = F)
     }
     pvalue1 <- rhs$value
