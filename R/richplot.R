@@ -91,8 +91,8 @@ richplot <- function(resultFis,top=50, pvalue.cutoff=0.05, padj.cutoff=NULL,
     }else{
       p <- p +geom_text(label = V(g)$name,size=label.size, color=label.color)
     }
-    print(p)
     if(savefig==TRUE){
       ggsave(p,file=paste(filename,"pdf",sep="."),width=width,height = height)
     }
+    print(p)
 }
