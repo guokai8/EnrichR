@@ -1,30 +1,42 @@
-#' Make user define annotation data
-#' @param anno: data.frame includes gene_id and GO or Pathway information
-#' @param godata: godata inlude BP,MF,CC annotation
-#' @param use: check if the user choose to load internal godata
-#' @export
+#' make annotation database using bioAnno results
+#' @importFrom AnnotationDbi keys
+#' @importFrom AnnotationDbi select
+#' @param dbname database name from bioAnno
+#' @param anntype GO or KEGG
+#' @param OP BP,CC,MF default use all
+#' @examples
+#' \dontrun{
+#' fromKEGG(species="ath")
+#' athgo<-makeOwn(dbname="org.ath.eg.db",anntype="GO")
+#' }
 #' @author Kai Guo
-makeOwnGO<-function(anno,godata=godata,use=TRUE){
-  if(use==TRUE){
-    data(godata)
-    godata<-godata
+#' @export
+
+
+makeOwn<-function(dbname,anntype="GO",OP=NULL){
+  if (!require(dbname,character.only=TRUE)){
+    stop("Please give the package name")
   }else{
-    #id<-keys(GO.db)
-    #MF = "GO:0003674", node of MF
-    #BP = "GO:0008150", node of BP
-    #CC = "GO:0005575", node of CC
-    gobp<-sapply(c("GO:0008150",GOBPOFFSPRING[["GO:0008150"]]),function(x)GO_child(x,ontology = "BP"))
-    gocc<-sapply(c("GO:0005575",GOBPOFFSPRING[["GO:0005575"]]),function(x)GO_child(x,ontology = "CC"))
-    gomf<-sapply(c("GO:0003674",GOBPOFFSPRING[["GO:0003674"]]),function(x)GO_child(x,ontology = "MF"))
-    godata<-c(gobp,c(gocc,gomf))
+    suppressMessages(require(dbname,character.only = T,quietly = T))
   }
-  anno.in<-sf(anno)
-  anno.bp<-lapply(godata, function(x)as.vector(unlist(anno.in[x])))
-  res<-Filter(Negate(is.null), anno.bp)
-  res<-data.frame("Gene"=as.vector(unlist(res)),"GO"=rep(names(res),times=lapply(res, length)))
-  return(res)
-}
-makeOwnKO<-function(anno){
-  anno<-na.omit(anno)
-  return(annot)
+  dbname<-eval(parse(text=dbname))
+  if(anntype=="GO"){
+    annof<-select(dbname,keys=keys(dbname),columns=c("GOALL","ONTOLOGYALL"))
+    colnames(annof)[1]<-"GeneID"
+    annof<-distinct_(annof,~GeneID, ~GOALL, ~ONTOLOGYALL)
+    annot <- getann("GO")
+    annof$Annot <- annot[annof[,2],"annotation"]
+    if(!is.null(OP)){
+      annof<-annof[annof$ONTOLOGYALL==OP,]
+    }
+  }
+  if(anntype=="KEGG"){
+    annof=select(dbname,keys=keys(dbname),columns="PATH")
+    annof<-na.omit(annof)
+    annot<-getann("KEGG")
+    annof[,1]<-as.vector(annof[,1])
+    annof[,2]<-as.vector(annof[,2])
+    annof$Annot<-annot[annof[,2],"annotation"]
+  }
+  return(annof)
 }
