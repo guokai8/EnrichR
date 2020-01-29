@@ -4,13 +4,30 @@
 \alias{gnet}
 \title{Draw network with ggplot2 style}
 \usage{
-gnet(df, rhs, top = 50, pvalue.cutoff = 0.05, padj.cutoff = NULL,
-  low = "orange", high = "red", weightcut = 0.2, useTerm = TRUE,
-  writeCyt = FALSE, cytoscapeFile = "network-file-for-cytoscape.txt",
-  vertex.label.color = "black", vertex.label.cex = 2,
-  vertex.node.shape = NULL, layout = layout.fruchterman.reingold,
-  savefig = FALSE, filename = "network", width = 7, height = 7,
-  segment.size = 0.2, node.alpha = 0.7, ...)
+gnet(
+  df,
+  rhs,
+  top = 50,
+  pvalue.cutoff = 0.05,
+  padj.cutoff = NULL,
+  low = "orange",
+  high = "red",
+  weightcut = 0.2,
+  useTerm = TRUE,
+  writeCyt = FALSE,
+  cytoscapeFile = "network-file-for-cytoscape.txt",
+  vertex.label.color = "black",
+  vertex.label.cex = 2,
+  vertex.node.shape = NULL,
+  layout = layout.fruchterman.reingold,
+  savefig = FALSE,
+  filename = "network",
+  width = 7,
+  height = 7,
+  segment.size = 0.2,
+  node.alpha = 0.7,
+  ...
+)
 }
 \arguments{
 \item{df}{Differential expression result or vector of genes}

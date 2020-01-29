@@ -4,10 +4,22 @@
 \alias{enrichdot}
 \title{Display enrichment result By using dotchart}
 \usage{
-enrichdot(resultFis, top = 50, pvalue.cutoff = 0.05, order = FALSE,
-  low = "lightpink", high = "red", alpha = 0.7, padj.cutoff = NULL,
-  fontsize.x = 10, fontsize.y = 10, usePadj = TRUE,
-  filename = NULL, width = 10, height = 8)
+enrichdot(
+  resultFis,
+  top = 50,
+  pvalue.cutoff = 0.05,
+  order = FALSE,
+  low = "lightpink",
+  high = "red",
+  alpha = 0.7,
+  padj.cutoff = NULL,
+  fontsize.x = 10,
+  fontsize.y = 10,
+  usePadj = TRUE,
+  filename = NULL,
+  width = 10,
+  height = 8
+)
 }
 \arguments{
 \item{low}{color used for small value}

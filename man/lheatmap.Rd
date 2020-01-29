@@ -4,9 +4,18 @@
 \alias{lheatmap}
 \title{Plot compare heatmap of Enrichment result among DEG groups}
 \usage{
-lheatmap(rhs, top = 50, colnames = NULL, xsize = 6, ysize = 6,
-  padj = NULL, horizontal = FALSE, pval = 0.05, returnData = FALSE,
-  ...)
+lheatmap(
+  rhs,
+  top = 50,
+  colnames = NULL,
+  xsize = 6,
+  ysize = 6,
+  padj = NULL,
+  horizontal = FALSE,
+  pval = 0.05,
+  returnData = FALSE,
+  ...
+)
 }
 \arguments{
 \item{top}{the number of Terms you want to display}

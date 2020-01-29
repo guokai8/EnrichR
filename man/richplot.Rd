@@ -4,14 +4,29 @@
 \alias{richplot}
 \title{richplot}
 \usage{
-richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
-  padj.cutoff = NULL, usePadj = TRUE, useTerm = TRUE,
-  low = "orange", high = "red", writeCyt = FALSE,
+richplot(
+  resultFis,
+  top = 50,
+  pvalue.cutoff = 0.05,
+  padj.cutoff = NULL,
+  usePadj = TRUE,
+  useTerm = TRUE,
+  low = "orange",
+  high = "red",
+  writeCyt = FALSE,
   cytoscapeFile = "network-file-for-cytoscape.txt",
-  label.color = "black", label.size = 2, node.shape = NULL,
-  layout = layout.fruchterman.reingold, savefig = FALSE,
-  filename = "network", width = 7, height = 7, node.alpha = 0.7,
-  repel = TRUE, segment.size = 0.2)
+  label.color = "black",
+  label.size = 2,
+  node.shape = NULL,
+  layout = layout.fruchterman.reingold,
+  savefig = FALSE,
+  filename = "network",
+  width = 7,
+  height = 7,
+  node.alpha = 0.7,
+  repel = TRUE,
+  segment.size = 0.2
+)
 }
 \arguments{
 \item{resultFis}{Enrichment results}
@@ -36,7 +51,7 @@ richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
 
 \item{label.size}{label size}
 
-\item{node.shape}{vector of shape and names of the vector should be the terms (default: 20)}
+\item{node.shape}{shape of the node}
 
 \item{layout}{layout method}
 
@@ -53,8 +68,6 @@ richplot(resultFis, top = 50, pvalue.cutoff = 0.05,
 \item{repel}{use ggrepel text function or not}
 
 \item{segment.size}{segment size for ggrepel text}
-
-\item{node.shape}{shape of the node}
 }
 \description{
 plot the sigificant terms and shared genes with network format

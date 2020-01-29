@@ -4,9 +4,18 @@
 \alias{RE}
 \title{Reactome Pathway Enrichment analysis function}
 \usage{
-RE(df, RO_FILE, keytype = "SYMBOL", species = "human",
-  padj.method = "BH", minSize = 2, maxSize = 500, keepRich = TRUE,
-  filename = NULL, cutoff = 0.05)
+RE(
+  df,
+  RO_FILE,
+  keytype = "SYMBOL",
+  species = "human",
+  padj.method = "BH",
+  minSize = 2,
+  maxSize = 500,
+  keepRich = TRUE,
+  filename = NULL,
+  cutoff = 0.05
+)
 }
 \arguments{
 \item{df}{DGE files (DESeq2 result files) or vector contains gene names}

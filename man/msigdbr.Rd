@@ -5,8 +5,14 @@
 \alias{makeMSIGDB}
 \title{Download database from Msigdb and prepare for enrichment analysis}
 \usage{
-makeMSIGDB(species = "human", keytype = "SYMBOL", subcategory = NULL,
-  category = NULL, path = "./", save = FALSE)
+makeMSIGDB(
+  species = "human",
+  keytype = "SYMBOL",
+  subcategory = NULL,
+  category = NULL,
+  path = "./",
+  save = FALSE
+)
 }
 \arguments{
 \item{species}{the species for query}

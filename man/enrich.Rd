@@ -4,9 +4,17 @@
 \alias{enrich}
 \title{Enrichment analysis for any type of annotation data}
 \usage{
-enrich(df, annot, annot.info = NULL, minSize = 1, maxSize = 500,
-  keepRich = TRUE, filename = NULL, gene.cutoff = 0.01,
-  padj.method = "BH")
+enrich(
+  df,
+  annot,
+  annot.info = NULL,
+  minSize = 1,
+  maxSize = 500,
+  keepRich = TRUE,
+  filename = NULL,
+  gene.cutoff = 0.01,
+  padj.method = "BH"
+)
 }
 \arguments{
 \item{df}{DGE files (DESeq2 result files) or vector contains gene names}

@@ -4,8 +4,11 @@
 \alias{makeplantann}
 \title{make plant annotation data based on ENSEMBLE}
 \usage{
-makeplantann(species = "Arabidopsis t", host = "plants.ensembl.org",
-  ann_type = "GO")
+makeplantann(
+  species = "Arabidopsis t",
+  host = "plants.ensembl.org",
+  ann_type = "GO"
+)
 }
 \arguments{
 \item{species}{the sepcies you want to search, you can use showplant to get the species name}

@@ -4,8 +4,7 @@
 \alias{makeesanno}
 \title{make annotation data except plant based on ENSEMBLE}
 \usage{
-makeesanno(species = "Human", host = "uswest.ensembl.org",
-  ann_type = "GO")
+makeesanno(species = "Human", host = "uswest.ensembl.org", ann_type = "GO")
 }
 \arguments{
 \item{species}{the species you want to search, you can use showplant to get the species name}

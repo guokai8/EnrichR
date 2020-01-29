@@ -4,11 +4,24 @@
 \alias{KE.plot}
 \title{Display KEGG enrichment result}
 \usage{
-KE.plot(resultFis, pvalue.cutoff = 0.05, top = 50, order = FALSE,
-  low = "lightpink", high = "red", alpha = 0.7, font.x = "bold",
-  font.y = "bold", fontsize.x = 10, fontsize.y = 10,
-  padj.cutoff = NULL, usePadj = TRUE, filename = NULL, width = 10,
-  height = 8)
+KE.plot(
+  resultFis,
+  pvalue.cutoff = 0.05,
+  top = 50,
+  order = FALSE,
+  low = "lightpink",
+  high = "red",
+  alpha = 0.7,
+  font.x = "bold",
+  font.y = "bold",
+  fontsize.x = 10,
+  fontsize.y = 10,
+  padj.cutoff = NULL,
+  usePadj = TRUE,
+  filename = NULL,
+  width = 10,
+  height = 8
+)
 }
 \arguments{
 \item{order}{order bar or not}

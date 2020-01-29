@@ -4,12 +4,26 @@
 \alias{mnetmap}
 \title{plot combine network of Terms}
 \usage{
-mnetmap(df, gores = NULL, kores = NULL, rores = NULL, pfres = NULL,
-  itres = NULL, top = NULL, top.display = NULL,
-  pvalue.cutoff = 0.05, padj.cutoff = NULL, visNet = F,
-  weightcut = 0.2, useTerm = TRUE, layout = NULL,
-  vertex.label.cex = 0.5, gnet = FALSE, vertex.node.shape = NULL,
-  ...)
+mnetmap(
+  df,
+  gores = NULL,
+  kores = NULL,
+  rores = NULL,
+  pfres = NULL,
+  itres = NULL,
+  top = NULL,
+  top.display = NULL,
+  pvalue.cutoff = 0.05,
+  padj.cutoff = NULL,
+  visNet = F,
+  weightcut = 0.2,
+  useTerm = TRUE,
+  layout = NULL,
+  vertex.label.cex = 0.5,
+  gnet = FALSE,
+  vertex.node.shape = NULL,
+  ...
+)
 }
 \arguments{
 \item{df}{DGE files (DESeq2 result files) or vector contains gene names}
