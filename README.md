@@ -1,6 +1,6 @@
 # EnrichR
 Functional Enrichment Analysis and Network Construction 
-#### PS: EnrichR are not supported any more.
+#### PS: EnrichR are not supported any more. Please use the richR("https://www.github.com/guokai8/richR")
 ## Description  
 __EnrichR__ is a package can be used for functional enrichment analysis and network construction based on enrichment analysis results. It supported almost all species pubished by ENSEMBL and included with Bioconductor. Now the _EnrichR_ provide function to direct download annotation dataset from the MsigDB. 
 ## Dependencies  
